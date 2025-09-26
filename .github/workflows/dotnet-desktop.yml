@@ -52,8 +52,13 @@ jobs:
         --runtime win-x64 `
         --self-contained true `
         /p:Platform=x64 `
+        /p:OutDir=$(Output_Directory)
         --output $env:Output_Directory
 
+    # 빌드 결과 폴더 확인
+    - name: List published folders
+      run: dir $env:Output_Directory /s
+  
     # 📦 빌드 결과물 업로드
     - name: Upload setup artifacts
       uses: actions/upload-artifact@v4
