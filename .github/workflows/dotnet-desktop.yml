@@ -61,10 +61,10 @@ jobs:
       shell: pwsh
       run: |
         if (Test-Path $env:Output_Directory) {
-          Write-Host "Published files in $env:Output_Directory"
+            Write-Host "Published files in " $env:Output_Directory
           Get-ChildItem -Path $env:Output_Directory -Recurse | Format-Table Name, Length, LastWriteTime -AutoSize
         } else {
-          Write-Host "Output directory not found: $env:Output_Directory"
+          Write-Host "Output directory not found: " $env:Output_Directory
           Write-Host "Available directories:"
           Get-ChildItem -Directory | Format-Table Name -AutoSize
         }
@@ -133,7 +133,7 @@ jobs:
           
           # 패턴 매칭으로 찾은 폴더들 삭제
           foreach ($folder in $languageFolders) {
-            Write-Host "Removing by pattern: $($folder.Name)"
+            Write-Host "Removing by pattern: " $folder.Name
             Remove-Item -Path $folder.FullName -Recurse -Force
           }
           
