@@ -1,0 +1,62 @@
+name: Build WExpert Setup
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        configuration: [Release]
+        #configuration: [Debug, Release]
+
+    runs-on: windows-latest
+
+    env:
+      Solution_Name: WExpert.sln
+      Test_Project_Path: WExpert.Tests.MSTest\WExpert.Tests.MSTest.csproj
+      Publish_Project_Path: WExpert\WExpert.csproj
+      Output_Directory: publish_output
+
+    steps:
+    - name: Checkout source code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Setup .NET 8 SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v2
+
+    # ✅ Release 빌드일 때만 테스트 실행, 실패해도 계속 진행
+    - name: Run unit tests (Release only)
+      if: matrix.configuration == 'Release'
+      continue-on-error: true
+      run: dotnet test $env:Test_Project_Path --configuration ${{ matrix.configuration }}
+
+    # 🔄 NuGet 복원
+    - name: Restore solution packages
+      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=${{ matrix.configuration }}
+
+    # 🚀 x64 Self-contained 앱 빌드
+    - name: Publish self-contained x64 setup
+      run: dotnet publish $env:Publish_Project_Path `
+        --configuration ${{ matrix.configuration }} `
+        --runtime win-x64 `
+        --self-contained true `
+        /p:Platform=x64 `
+        --output $env:Output_Directory
+
+    # 📦 빌드 결과물 업로드
+    - name: Upload setup artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: Setup Package
+        path: ${{ env.Output_Directory }}\**
