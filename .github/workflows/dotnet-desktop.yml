@@ -55,6 +55,7 @@ jobs:
     #    /p:OutDir=${{ env.Output_Directory }}\ `
     #    --output $env:Output_Directory
 
+
     - name: Build self-contained x64 setup with MSBuild
       run: msbuild $env:Publish_Project_Path `
         /p:Configuration=${{ matrix.configuration }} `
@@ -63,7 +64,10 @@ jobs:
         /p:SelfContained=true `
         /p:PublishSingleFile=true `
         /p:OutDir=${{ env.Output_Directory }}\
-
+    
+    - name: List published files
+      run: dir $env:Output_Directory /s
+    
     # 빌드 결과 폴더 확인
     #- name: List published folders
     #  run: dir $env:Output_Directory /s
