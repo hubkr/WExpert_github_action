@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Page Update="Controls\ProgressDialogControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ContentDialogs\AccountContentDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ContentDialogs\AccountSubPage3.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ContentDialogs\AccountSubPage2.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\AnalysisViewerPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\ContentDialogs\AccountSubPage1.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\ProgressRingControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\USViewerControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ContentDialogs\RegisterConsultationContentDialog .xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SplashPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\PatientListPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup />
+  <ItemGroup />
+  <ItemGroup />
+  <ItemGroup />
+  <ItemGroup>
+    <Page Update="Controls\NotificationControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <None Update="Strings\en-us\Resources.resw">
+      <SubType>Designer</SubType>
+    </None>
+    <Page Update="Styles\Dark\ControlsResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Update="Strings\en-us\Resources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
+  </ItemGroup>
+</Project>

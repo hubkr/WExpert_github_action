@@ -1,0 +1,188 @@
+<base:WEXBasePage
+    x:Class="WExpert.Views.ContentDialogs.AccountSubPage3"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:base="using:WExpert.Views.Base"
+    xmlns:converter="using:WExpert.Binding.Converter"
+    NavigationCacheMode="Required">
+
+    <base:WEXBasePage.Resources>
+        <converter:WEXAccountDialogConverter x:Key="wexpertAccountDialogConverter"/>
+
+        <!-- #region TextBox Style -->
+        <Style x:Key="AccountLocalDialogTextBoxStyle1" TargetType="TextBox"
+               BasedOn="{StaticResource WEXLineTextBoxStyle2}">
+            <Setter Property="IsEnabled" Value="False"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Padding" Value="10"/>
+        </Style>
+
+        <Style x:Key="AccountLocalDialogTextBoxStyle2" TargetType="TextBox"
+               BasedOn="{StaticResource WEXLineTextBoxStyle2}">
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Background" Value="{StaticResource TypeTransparent8}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource SolidDkSolid}"/>
+        </Style>
+        <!-- #endregion TextBox Style -->
+
+        <!-- #region TextBlock Style -->
+        <!--
+        <Style x:Key="AccountLocalTextBlockStyle1" TargetType="TextBlock"
+               BasedOn="{StaticResource TextBlockStyleBase}">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="{StaticResource SolidLtSolid}"/>
+        </Style>
+        -->
+
+        <Style x:Key="AccountLocalTextBlockStyle2" TargetType="TextBlock"
+               BasedOn="{StaticResource TextBlockStyleBase}">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="{StaticResource ComponentsBlue}"/>
+        </Style>
+        <!-- #endregion TextBlock Style -->
+
+        <!-- #region RichTextBlock Style -->
+        <Style x:Key="AccountLocalRichTextBlockStyle1" TargetType="RichTextBlock"
+               BasedOn="{StaticResource RichTextBlockStyleBase}">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="MaxLines" Value="3"/>
+            <Setter Property="Foreground" Value="{StaticResource SolidLtSolid}"/>
+        </Style>
+        <!-- #endregion RichTextBlock Style -->
+    </base:WEXBasePage.Resources>
+    
+    <StackPanel Orientation="Vertical" Margin="50,20,50,20">
+        <TextBlock x:Uid="CtlLicense"
+                    Style="{StaticResource ContentDialogLabelTextStyle3}"/>
+        
+        <Rectangle Height="25"/>
+
+        <!-- License key -->
+        <TextBlock x:Uid="CtlLicenseKey"
+                    Style="{StaticResource ContentDialogLabelTextStyle4}"/>
+        <TextBox Style="{StaticResource AccountLocalDialogTextBoxStyle2}"
+                    Text="{x:Bind ViewModel.LicenseKey, Mode=OneWay}"/>
+
+        <Rectangle Height="25"/>
+
+        <!-- Algorithm Plan -->
+        <TextBlock x:Uid="CtlAlgorithm"
+                    Style="{StaticResource ContentDialogLabelTextStyle4}"/>
+        <TextBox Style="{StaticResource AccountLocalDialogTextBoxStyle2}"
+                    Text="{x:Bind ViewModel.AlgorithmPlan, Mode=OneWay}"/>
+
+        <Rectangle Height="10"/>
+
+        <!-- Algorithm Plan Description -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <FontIcon FontSize="15"
+                          VerticalAlignment="Top"
+                          Foreground="{StaticResource SolidLtSolid}"
+                          FontFamily="Segoe MDL2 Assets"
+                          Glyph="&#xE783;"
+                          Margin="0,2,10,0"/>                
+            </Grid>
+            <Grid Grid.Column="1">
+                <!--
+                <TextBlock x:Uid="CtlAlgorithmPlanDescription"
+                           Style="{StaticResource AccountLocalTextBlockStyle1}"/>
+                -->
+                <RichTextBlock Style="{StaticResource AccountLocalRichTextBlockStyle1}">
+                    <Paragraph>
+                        <Run x:Uid="CtlAlgorithmPlanDescription"/>
+                    </Paragraph>
+                </RichTextBlock>
+                
+            </Grid>
+        </Grid>
+        
+        <Rectangle Height="25"/>
+
+        <!-- Consultation Plan -->
+        <TextBlock x:Uid="CtlConsultation"
+                    Style="{StaticResource ContentDialogLabelTextStyle4}"/>
+        <TextBox Style="{StaticResource AccountLocalDialogTextBoxStyle2}"
+                    Text="{x:Bind ViewModel.ConsultationPlan, Mode=OneWay}"/>
+
+        <Rectangle Height="10"/>
+
+        <!-- Consultation Plan Description -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <FontIcon FontSize="15"
+                          VerticalAlignment="Top"
+                          Foreground="{StaticResource SolidLtSolid}"
+                          FontFamily="Segoe MDL2 Assets"
+                          Glyph="&#xE783;"
+                          Margin="0,2,10,0"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <!--
+                <TextBlock x:Uid="CtlConsultationPlanDescription"
+                           Style="{StaticResource AccountLocalTextBlockStyle1}"/>
+                -->                
+                <RichTextBlock Style="{StaticResource AccountLocalRichTextBlockStyle1}">
+                    <Paragraph>
+                        <Run x:Uid="CtlConsultationPlanDescription"/>
+                    </Paragraph>
+                </RichTextBlock>
+                
+            </Grid>
+        </Grid>
+        
+        <Rectangle Height="25"/>        
+
+        <!-- Validity period -->
+        <TextBlock x:Uid="CtlValidityPeriod"
+                   Style="{StaticResource ContentDialogLabelTextStyle4}"/>
+        <TextBox Style="{StaticResource AccountLocalDialogTextBoxStyle2}"
+                 Text="{x:Bind ViewModel.ValidityPeriod, Mode=OneWay}"/>
+
+        <Rectangle Height="15"/>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" Visibility="{x:Bind ViewModel.ProfileLicense, Mode=OneWay,
+                                  Converter={StaticResource wexpertAccountDialogConverter}, ConverterParameter='DisplayExpiredVisibility'}">
+                <FontIcon FontSize="15"
+                          VerticalAlignment="Top"
+                          Foreground="{x:Bind ViewModel.ProfileLicense, Mode=OneWay,
+                                     Converter={StaticResource wexpertAccountDialogConverter}, ConverterParameter='DisplayExpiredColor'}"
+                          FontFamily="Segoe MDL2 Assets"
+                          Glyph="&#xE783;"
+                          Margin="0,2,10,0"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <TextBlock Style="{StaticResource AccountLocalTextBlockStyle2}"
+                           Foreground="{x:Bind ViewModel.ProfileLicense, Mode=OneWay,
+                                     Converter={StaticResource wexpertAccountDialogConverter}, ConverterParameter='DisplayExpiredColor'}"
+                           Text="{x:Bind ViewModel.ProfileLicense, Mode=OneWay,
+                                  Converter={StaticResource wexpertAccountDialogConverter}, ConverterParameter='DisplayExpiredText'}"/>
+            </Grid>
+        </Grid>
+    </StackPanel>
+ 
+</base:WEXBasePage>

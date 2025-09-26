@@ -1,0 +1,103 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        
+    <!-- #region Color Style -->
+    <!-- Type/Transparency/Grey -->
+    <SolidColorBrush x:Key="BrushTypeTransparent20" Color="{StaticResource TypeTransparent20}"/>
+    <SolidColorBrush x:Key="BrushTypeTransparent30" Color="{StaticResource TypeTransparent30}"/>
+    <SolidColorBrush x:Key="BrushComponentsLtBrand" Color="#FF306BD9"/>
+    <SolidColorBrush x:Key="BrushComponentsRed" Color="{StaticResource ComponentsRed}" />
+    <SolidColorBrush x:Key="BrushComponentsYellow" Color="{StaticResource ComponentsYellow}" />
+    <SolidColorBrush x:Key="BrushComponentsLtWhite" Color="{StaticResource ComponentsLtWhite}" />    
+    <SolidColorBrush x:Key="BrushTextSecondary" Color="{StaticResource TextSecondary}" />
+
+    <Color x:Key="ToggleGreayBg">#4C6C7489</Color>
+
+    <Color x:Key="TypeTransparent60">#991A1C1E</Color>
+    <Color x:Key="TypeTransparent30">#4D6C7489</Color>
+    <Color x:Key="TypeTransparent20">#33FFFFFF</Color>
+    <Color x:Key="TypeTransparent12">#1F69727B</Color>
+    <Color x:Key="TypeTransparent8">#14FFFFFF</Color>
+    <Color x:Key="TypeTransparent5">#0DFFFFFF</Color>
+
+    <!-- Type/Transparency/Color -->
+    <Color x:Key="TypeTransparentColorOrange15">#26DD826B</Color>
+    <Color x:Key="TypeTransparentColorPurple15">#26A234D5</Color>
+    <!-- Type/Transparency/Color/Red -->
+    <Color x:Key="TypeTransparentColorRed15">#26DD6B6B</Color>
+    <Color x:Key="TypeTransparentColorLtRed15">#26E69393</Color>
+    <Color x:Key="TypeTransparentColorDkRed15">#26B62A2A</Color>
+    <!-- Type/Transparency/Blue -->
+    <Color x:Key="TypeTransparentColorBlue15">#261486FF</Color>
+    <Color x:Key="TypeTransparentColorLtBlue15">#267ABBFF</Color>
+    <Color x:Key="TypeTransparentColorDkBlue15">#260054AD</Color>
+    <Color x:Key="TypeTransparentColorBlue60">#992F7AC5</Color>
+    <!-- Type/Transparency/Green -->
+    <Color x:Key="TypeTransparentColorGreen15">#2622D3A7</Color>
+    <Color x:Key="TypeTransparentColorLtGreen15">#2673E8CB</Color>
+    <Color x:Key="TypeTransparentColorDkGreen15">#26147B61</Color>
+    <!-- Type/Bg -->   
+    <Color x:Key="BgBase">#27292C</Color>
+    <Color x:Key="BgBaseAlt">#1A1C1E</Color>
+    <Color x:Key="BgError">#98364B</Color>
+    <!-- Type/Solid -->
+    <Color x:Key="SolidDkSolid">#3E4246</Color>
+    <Color x:Key="SolidLtSolid">#919194</Color>
+    <Color x:Key="SolidFocus">#759DE6</Color>
+    <!-- Type/Components(Icon) -->
+    <Color x:Key="ComponentsLtGrey">#888D96</Color>
+    <Color x:Key="ComponentsRed">#F04763</Color>
+    <Color x:Key="ComponentsYellow">#E6AB15</Color>
+    <Color x:Key="ComponentsBlue">#47A0FF</Color>
+    <Color x:Key="ComponentsLtBrand">#306BD9</Color>
+    <Color x:Key="ComponentsLtGreen">#22D3A7</Color>
+    <Color x:Key="ComponentsLtPurple">#C989E7</Color>
+    <Color x:Key="ComponentsLtDisabled">#565B61</Color>
+    <Color x:Key="ComponentsLtWhite">#FFF</Color>
+    <Color x:Key="ComponentsBlack">#000</Color>
+    <!-- Type/Text -->
+    <Color x:Key="TextPrimary">#FFF</Color>
+    <Color x:Key="TextSecondary">#D4D6DC</Color>
+    <Color x:Key="TextTertiary">#B9BDC7</Color>    
+    <!-- W Blue -->
+    <Color x:Key="WBlue50">#BACEF2</Color>
+    <Color x:Key="WBlue100">#759DE6</Color>
+    <Color x:Key="WBlue200">#5384DF</Color>
+    <Color x:Key="WBlue300">#306BD9</Color>
+    <Color x:Key="WBlue400">#2359BE</Color>
+    <Color x:Key="WBlue500">#1C499B</Color>
+    <Color x:Key="WBlue600">#163979</Color>
+    <Color x:Key="WBlue700">#102956</Color>
+    <Color x:Key="WBlue800">#0D1F44</Color>
+    <Color x:Key="WBlue900">#0A1833</Color>
+    <!-- W Grey -->
+    <Color x:Key="WGrey50">#D8DDE9</Color>
+    <Color x:Key="WGrey100">#BDC6DB</Color>
+    <Color x:Key="WGrey200">#96A3C5</Color>
+    <Color x:Key="WGrey300">#7B8CB7</Color>
+    <Color x:Key="WGrey400">#6175A8</Color>
+    <Color x:Key="WGrey500">#506291</Color>
+    <Color x:Key="WGrey600">#415076</Color>
+    <Color x:Key="WGrey700">#333E5C</Color>
+    <Color x:Key="WGrey800">#242D42</Color>
+    <Color x:Key="WGrey900">#151C28</Color>
+    <!-- W Purple -->
+    <Color x:Key="WPurple200">#A234D5</Color>
+    <Color x:Key="WPurple300">#A234D5</Color>
+    <Color x:Key="WPurple400">#A234D5</Color>
+    <Color x:Key="WPurple500">#8525B1</Color>
+    <Color x:Key="WPurple600">#651C87</Color>
+    <!-- W ROI Marking outline colors -->
+    <Color x:Key="WSegOutline1">#FFFA3939</Color>
+    <Color x:Key="WSegOutline2">#FFF96D2F</Color>
+    <Color x:Key="WSegOutline3">#FFFCBC05</Color>
+    <Color x:Key="WSegOutline4">#FF61C339</Color>
+    <Color x:Key="WSegOutline5">#FFA234D5</Color>
+    <Color x:Key="WSegOutline6">#FF3396FF</Color>
+    <Color x:Key="WSegOutline7">#FF0346FE</Color>
+    <Color x:Key="WSegOutline8">#FFF</Color>
+    <!-- Etc colors -->
+    <Color x:Key="Answer">#D6A9EB</Color>
+    <!-- endregion -->
+   
+</ResourceDictionary>

@@ -1,0 +1,234 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <RootNamespace>WExpert</RootNamespace>
+    <ApplicationIcon>Assets/WindowIcon.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Platforms>x64;arm64;AnyCPU</Platforms>
+    <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+    <PublishProfile>Properties\PublishProfiles\win10-$(Platform).pubxml</PublishProfile>
+	<ImplicitUsings>enable</ImplicitUsings>
+	<Nullable>enable</Nullable>
+	<UseWinUI>true</UseWinUI>
+    <EnableMsixTooling>true</EnableMsixTooling>
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <WindowsPackageType>None</WindowsPackageType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Remove="Assets\Html\test.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Assets\Font\Roboto\Roboto-Black.ttf" />
+    <None Remove="Assets\Font\Roboto\Roboto-BlackItalic.ttf" />
+    <None Remove="Assets\Font\Roboto\Roboto-Bold.ttf" />
+    <None Remove="Assets\Font\Roboto\Roboto-BoldItalic.ttf" />
+    <None Remove="Assets\Font\Roboto\Roboto-Italic.ttf" />
+    <None Remove="Assets\Font\Roboto\Roboto-Light.ttf" />
+    <None Remove="Assets\Font\Roboto\Roboto-LightItalic.ttf" />
+    <None Remove="Assets\Font\Roboto\Roboto-Medium.ttf" />
+    <None Remove="Assets\Font\Roboto\Roboto-MediumItalic.ttf" />
+    <None Remove="Assets\Font\Roboto\Roboto-Regular.ttf" />
+    <None Remove="Assets\Font\Roboto\Roboto-Thin.ttf" />
+    <None Remove="Assets\Font\Roboto\Roboto-ThinItalic.ttf" />
+    <None Remove="Assets\Images\BackButton.png" />
+    <None Remove="Assets\Images\BackbuttonLogin.png" />
+    <None Remove="Assets\Images\FlipVertical.png" />
+    <None Remove="Assets\Images\logo.png" />
+    <None Remove="Assets\Images\NoImage.png" />
+    <None Remove="Assets\Images\RegistrationUpload.png" />
+    <None Remove="Assets\Images\ReportBrightness.png" />
+    <None Remove="Assets\Images\ReportFlipLeftRight.png" />
+    <None Remove="Assets\Images\ReportFlipUpDown.png" />
+    <None Remove="Assets\Images\ReportRedo.png" />
+    <None Remove="Assets\Images\ReportReset.png" />
+    <None Remove="Assets\Images\ReportUndo.png" />
+    <None Remove="Assets\Images\ReportZoom.png" />
+    <None Remove="Assets\Images\Sorting.png" />
+    <None Remove="Assets\Images\UploadCursor.png" />
+    <None Remove="Assets\Images\UploadSimple.png" />
+    <None Remove="Controls\NotificationControl.xaml" />
+    <None Remove="Controls\ProgressDialogControl.xaml" />
+    <None Remove="Controls\ProgressRingControl.xaml" />
+    <None Remove="Controls\USViewerControl.xaml" />
+    <None Remove="Styles\Button.xaml" />
+    <None Remove="Styles\CalendarDatePicker.xaml" />
+    <None Remove="Styles\CheckBox.xaml" />
+    <None Remove="Styles\Color.xaml" />
+    <None Remove="Styles\ContentDialog.xaml" />
+    <None Remove="Styles\Dark\ControlsResourceDictionary.xaml" />
+    <None Remove="Styles\Font.xaml" />
+    <None Remove="Styles\ListView.xaml" />
+    <None Remove="Styles\PasswordBox.xaml" />
+    <None Remove="Styles\RichEditBox.xaml" />
+    <None Remove="Styles\Slider.xaml" />
+    <None Remove="Styles\TextBox.xaml" />
+    <None Remove="Views\ContentDialogs\AboutContentDialog.xaml" />
+    <None Remove="Views\ContentDialogs\BlankPage1.xaml" />
+    <None Remove="Views\ContentDialogs\MessageContentDialog.xaml" />
+    <None Remove="Views\ContentDialogs\PasteImageContentDialog.xaml" />
+    <None Remove="Views\PatientListPage.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Manifest Include="$(ApplicationManifest)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Clipper2" Version="1.5.4" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="CommunityToolkit.WinUI.UI.Behaviors" Version="7.1.2" />
+    <PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
+    <PackageReference Include="CommunityToolkit.WinUI.UI.Controls.DataGrid" Version="7.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.9" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.250907003" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="NLog" Version="6.0.4" />
+    <PackageReference Include="Rulyotano.Math.Geometry" Version="2.0.0" />
+    <PackageReference Include="Rulyotano.Math.Interpolation.Bezier" Version="3.0.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.14.0" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="System.Net.Primitives" Version="4.3.1" />
+    <PackageReference Include="System.Private.Uri" Version="4.3.2" />
+    <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
+    <PackageReference Include="WinUIEx" Version="2.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WExpert.Core\WExpert.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Page Update="Controls\NotificationControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\ContentDialogs\BlankPage1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\ContentDialogs\BlankPage1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Styles\Dark\ControlsResourceDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\ContentDialogs\AccountSubPage3.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ContentDialogs\AccountSubPage2.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ContentDialogs\AccountSubPage1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\Dialogs\ChangePasswordDialog.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Dialogs\MessageContentDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Controls\ProgressDialogControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Styles\ContentDialog.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\PasswordBox.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Dialogs\PasteImageContentDialog.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AnalysisViewerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\Dialogs\AboutContentDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Controls\ProgressRingControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Controls\USViewerControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\PatientListPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\Dialogs\RegistrationContentDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Styles\CalendarDatePicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Styles\CheckBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Styles\Color.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Styles\ListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Styles\RichEditBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Styles\Slider.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Styles\TextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Styles\Button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Styles\Font.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+    <ProjectCapability Include="Msix" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Assets\Font\Geist\" />
+    <Folder Include="Styles\Light\" />
+  </ItemGroup>
+    
+  <PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+    <HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
+  </PropertyGroup>
+
+  <!-- Build version & Build date -->
+  <PropertyGroup>
+    <VersionPrefix>0.11.2</VersionPrefix>
+	<!-- <VersionSuffix>$([System.DateTime]::UtcNow.AddHours(9).ToString("yyyyMMddHHmm"))</VersionSuffix> -->
+	<VersionSuffix>$([System.DateTime]::UtcNow.AddHours(9).ToString("yy"))$([System.DateTime]::UtcNow.AddHours(9).DayOfYear.ToString("000"))</VersionSuffix>
+	<AllowUnsafeBlocks>true</AllowUnsafeBlocks> <!-- 빌드 날짜는 KST(+9) 기준으로 처리 -->
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|arm64'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|arm64'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'" />
+
+  <Target Name="SetVersion" BeforeTargets="CoreCompile">
+    <PropertyGroup>
+	  <AssemblyVersion>$(VersionPrefix)</AssemblyVersion>
+	  <FileVersion>$(VersionPrefix)</FileVersion>
+	  <InformationalVersion>$(VersionPrefix)+$(VersionSuffix)</InformationalVersion>
+	</PropertyGroup>
+  </Target>
+
+  <!-- 불필요한 언어별 리소스 제거 -->
+  <Import Project="RemoveLanguageFolders.targets" />
+	
+</Project>

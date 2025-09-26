@@ -1,0 +1,248 @@
+<Page
+    x:Class="WExpert.Views.LoginPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:behaviors="using:WExpert.Binding.Behavior"
+    xmlns:wexcontrols="using:WExpert.Controls"
+    xmlns:converter="using:WExpert.Binding.Converter"
+    xmlns:helper="using:WExpert.Helpers"
+    Background="{StaticResource WGrey900}"
+    Loaded="Page_Loaded">
+
+    <Page.Resources>
+        <!--#region Hyperlink Style -->
+        <Style x:Key="LoginLocalHyperlinkStyle1" TargetType="HyperlinkButton"
+               BasedOn="{StaticResource WEXHyperlinkButtonStyle1}">
+            <Setter Property="FontFamily" Value="{StaticResource DefaultFont}"/>
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Foreground" Value="{StaticResource ComponentsBlue}"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+
+        <Style x:Key="LoginLocalHyperlinkStyle2" TargetType="HyperlinkButton"
+               BasedOn="{StaticResource WEXHyperlinkButtonStyle1}">
+            <Setter Property="FontFamily" Value="{StaticResource DefaultFont}"/>
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Foreground" Value="{StaticResource ComponentsBlue}"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="NavigateUri" Value="https://www.w-ai.ai/product"/>
+        </Style>
+        <!--#endregion Hyperlink Style-->
+
+        <!-- #region RichTextBlock Style -->
+        <Style x:Key="LoginLocalRichTextBlockStyle1" TargetType="RichTextBlock"
+               BasedOn="{StaticResource RichTextBlockStyleBase}">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="MaxLines" Value="3"/>
+            <Setter Property="Foreground" Value="{StaticResource ComponentsRed}"/>
+        </Style>
+        <!-- #endregion RichTextBlock Style -->
+
+        <!-- #region Button style -->
+        <Style x:Key="LoginLocalButtonStyle1" TargetType="Button"
+                   BasedOn="{StaticResource WEXSolidButtonStyle2}">
+            <Setter Property="Height" Value="40" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="CornerRadius" Value="6" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Background" Value="{StaticResource ComponentsLtBrand}" />
+        </Style>
+        <!-- #endregion Button style -->
+        
+        <!-- #region TextBox style -->
+        <Style x:Key="LoginLocalTextBoxStyle1" TargetType="TextBox"
+                   BasedOn="{StaticResource WEXSolidTextBoxStyle1}">
+            <Setter Property="Height" Value="48"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Padding" Value="10,14,10,10"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="MaxLength" Value="20"/>
+        </Style>
+        <!-- #endregion TextBox style -->
+        
+        <!-- #region PasswordBox style -->
+        <Style x:Key="LoginLocalPasswordBoxStyle1" TargetType="PasswordBox"
+                   BasedOn="{StaticResource WEXSolidPasswordBoxStyle1}">
+            <Setter Property="Height" Value="48"/>
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Padding" Value="16,12,16,10" />
+            <Setter Property="CornerRadius" Value="6" />
+            <Setter Property="MaxLength" Value="16" />
+        </Style>
+        <!-- #endregion PasswordBox style -->
+        
+        <!-- #region TextBlock style -->
+        <Style x:Key="LoginLocalTextBlockStyle1" TargetType="TextBlock"
+                   BasedOn="{StaticResource TextBlockStyleBase}">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Margin" Value="0,0,3,0" />
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextDecorations" Value="None" />
+            <Setter Property="Foreground" Value="{StaticResource ComponentsLtGrey}" />
+        </Style>
+
+        <Style x:Key="LoginLocalTextBlockStyle2" TargetType="TextBlock"
+                   BasedOn="{StaticResource TextBlockStyleBase}">
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="LineHeight" Value="16"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Canvas.ZIndex" Value="0"/>
+            <Setter Property="Foreground" Value="{StaticResource WGrey300}"/>
+        </Style>
+
+        <Style x:Key="LoginLocalTextBlockStyle3" TargetType="TextBlock"
+               BasedOn="{StaticResource TextBlockStyleBase}">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="LineHeight" Value="25" />
+            <Setter Property="Padding" Value="8,0,8,0" />
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Foreground" Value="{StaticResource TextTertiary}" />
+        </Style>
+
+        <Style x:Key="LoginLocalTextBlockStyle4" TargetType="TextBlock"
+                   BasedOn="{StaticResource TextBlockStyleBase}">
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="LineHeight" Value="16"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Canvas.ZIndex" Value="0"/>
+            <Setter Property="Foreground" Value="{StaticResource WGrey300}"/>
+        </Style>
+        <!-- #endregion TextBlock style -->
+        
+    </Page.Resources>
+
+    <Grid x:Name="ContentArea">
+        
+        <!-- 로그인 화면 -->
+        <!-- Height="619" -->
+        <Border x:Name="LoginBoarder"
+                Width="638"
+                Height="Auto"      
+                MaxHeight="690"
+                Background="#121212"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Canvas.ZIndex="1" 
+                BorderThickness="4"
+                CornerRadius="20">
+
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#802359BE" Offset="0.0"/>
+                    <!-- rgba(35, 89, 190, 0.5) -->
+                    <GradientStop Color="#809D9DE6" Offset="0.495"/>
+                    <!-- rgba(117, 157, 230, 0.5) -->
+                    <GradientStop Color="#80163979" Offset="0.975"/>
+                    <!-- rgba(22, 57, 121, 0.5) -->
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+
+            <Grid Margin="60,50,60,50">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="132"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="48"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="48"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="18"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="18"/>
+                    <RowDefinition Height="28"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" VerticalAlignment="Top" >
+                    <Image Width="252"
+                           Height="54"
+                           Source="ms-appx:///Assets/Images/logo.png"/>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <TextBlock x:Uid="CtlId"
+                               Style="{StaticResource LoginLocalTextBlockStyle3}"/>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <TextBox x:Name="loginIdTextBox"
+                             x:Uid="CtlIDHint"
+                             Style="{StaticResource LoginLocalTextBoxStyle1}"
+                             Text="{x:Bind ViewModel.Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             KeyDown="LoginIdTextBox_KeyDown"
+                             TextChanged="LoginIdTextBox_TextChanged"/>
+                </Grid>
+                <Grid Grid.Row="5" VerticalAlignment="Center">
+                    <TextBlock x:Uid="CtlPassword"                                
+                               Style="{StaticResource LoginLocalTextBlockStyle3}"/>
+                </Grid>
+                <Grid Grid.Row="7">
+                    <PasswordBox x:Name="passwordBox"
+                                 x:Uid="CtlPasswordHint"
+                                 Style="{StaticResource LoginLocalPasswordBoxStyle1}"
+                                 Padding="10,14,10,10"         
+                                 GotFocus="PasswordBox_GotFocus"
+                                 LostFocus="PasswordBox_LostFocus"
+                                 PasswordChanged="PasswordBox_PasswordChanged"
+                                 KeyDown="PasswordBox_KeyDown"/>
+                </Grid>
+                <Grid Grid.Row="9">
+                    <ToggleSwitch x:Uid="CtlRememberMe" IsEnabled="True"
+                                  IsOn="{x:Bind ViewModel.RememberId, Mode=TwoWay}" 
+                                  Style="{StaticResource WEXBaseToggleSwitchStyle1}"/>
+
+                    <HyperlinkButton x:Uid="CtlForgotPassword"
+                                     Style="{StaticResource LoginLocalHyperlinkStyle1}"
+                                     Command="{x:Bind ViewModel.ForgotPasswordCommand}"/>
+                </Grid>
+                <Grid Grid.Row="10">
+                    <RichTextBlock Style="{StaticResource LoginLocalRichTextBlockStyle1}"
+                                   Visibility="{x:Bind ViewModel.ShowErrorMessage, Mode=OneWay}">
+                        <Paragraph>
+                            <Run Text="{x:Bind ViewModel.ErrorMessage, Mode=OneWay}"/>
+                        </Paragraph>
+                    </RichTextBlock>
+                </Grid>
+                <Grid Grid.Row="11">
+                    <Button x:Name="loginButton"
+                            x:Uid="CtlLoginButton"
+                            Style="{StaticResource LoginLocalButtonStyle1}"
+                            IsEnabled="{x:Bind ViewModel.EnabledLoginButton, Mode=OneWay}"
+                            Click="LoginButton_Click"/>
+
+                    <ProgressRing IsActive="{x:Bind ViewModel.ActiveLoginProgress, Mode=OneWay}"
+                                  Style="{StaticResource WEXProgressRingStyle1}"/>
+                </Grid>
+                <Grid Grid.Row="13" Background="{StaticResource SolidDkSolid}"/>
+                <Grid Grid.Row="15" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock x:Uid="CtlHowToUse"
+                                   Style="{StaticResource LoginLocalTextBlockStyle1}"/>
+                        <HyperlinkButton x:Uid="CtlClickHere"
+                                         Style="{StaticResource LoginLocalHyperlinkStyle2}"/>                        
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,40">            
+            <TextBlock Text="{x:Bind ViewModel.ProgramVersion, Mode=OneWay}"
+                       Style="{StaticResource LoginLocalTextBlockStyle4}"/>
+            <TextBlock x:Uid="CtlCopyright"
+                       Style="{StaticResource LoginLocalTextBlockStyle2}" />
+        </StackPanel>
+    </Grid>
+</Page>

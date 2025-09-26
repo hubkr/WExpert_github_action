@@ -1,0 +1,110 @@
+<base:WEXBaseContentDialog
+    x:Class="WExpert.Views.ContentDialogs.MessageContentDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:base="using:WExpert.Views.Base"
+    Background="{StaticResource BgBase}"
+    xmlns:wexcontrols="using:WExpert.Controls"
+    xmlns:viewModels="using:WExpert.ViewModels"
+    Loaded="Dialog_Loaded">
+
+    <base:WEXBaseContentDialog.Resources>
+        <!-- #region TextBlock Style -->
+        <Style x:Key="MessageDialogLocalBlockStyle1" TargetType="TextBlock"
+           BasedOn="{StaticResource TextBlockStyleBase}">
+            <Setter Property="Padding" Value="0,2,0,0" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="LineHeight" Value="26" />
+            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="Foreground" Value="{StaticResource ComponentsLtWhite}" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+
+        <Style x:Key="MessageDialogLocalBlockStyle2" TargetType="TextBlock"
+           BasedOn="{StaticResource TextBlockStyleBase}">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="LineHeight" Value="21" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="Foreground" Value="{StaticResource ComponentsLtWhite}" />
+        </Style>
+        <!-- #endregion TextBlock Style -->
+        
+        <!-- #region Button Style -->
+        <Style x:Key="LocalDialogCloseButtonStyle1" TargetType="Button"
+           BasedOn="{StaticResource WEXSolidButtonStyle3}">
+            <Setter Property="Width" Value="32"/>
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <!-- #endregion Button Style -->
+    </base:WEXBaseContentDialog.Resources>
+
+    <!--
+    <base:WEXBaseContentDialog.DataContext>
+        <viewModels:MessageContentViewModel x:Name="ViewModel"/>
+    </base:WEXBaseContentDialog.DataContext>
+    -->
+    
+    <Grid MinWidth="520"
+          MaxWidth="520"
+          Margin="20,20,20,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.RowSpan="3" Grid.Column="0" VerticalAlignment="Center">
+            <Image Source="{x:Bind ViewModel.TitleIcon, Mode=OneWay}"
+                   Width="50"
+                   Height="50"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Center"
+                   Stretch="Uniform"/>
+        </Grid>
+
+        <!-- Title -->
+        <Grid Grid.Row="0"
+              Grid.Column="2"
+              VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <TextBlock Style="{StaticResource MessageDialogLocalBlockStyle1}"
+                           Text="{x:Bind ViewModel.DialogTitle, Mode=OneWay}"/>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <!-- TODO .. binding 을 통해 close 시키기 -->
+                <Button Style="{StaticResource LocalDialogCloseButtonStyle1}"
+                    Click="OnClose">
+                    <Image Style="{StaticResource DialogHeaderCloseButtonStyle1}"/>
+                    <ToolTipService.ToolTip>
+                        <ToolTip x:Uid="CtlCloseTooltip"/>
+                    </ToolTipService.ToolTip>
+                </Button>
+            </Grid>
+        </Grid>
+        
+        <!-- Contents -->
+        <Grid Grid.Row="2" Grid.Column="2">
+            <TextBlock Style="{StaticResource MessageDialogLocalBlockStyle2}"
+                       Text="{x:Bind ViewModel.DialogContent, Mode=OneWay}"/>
+        </Grid>
+    </Grid>
+</base:WEXBaseContentDialog>

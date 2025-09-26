@@ -1,0 +1,195 @@
+<base:WEXBaseContentDialog
+    x:Class="wai.Views.ContentDialogs.AboutContentDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:base="using:WExpert.Views.Base"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:viewModels="using:WExpert.ViewModels"
+    xmlns:wexcontrols="using:WExpert.Controls"
+    Loaded="Dialog_Loaded">
+
+    <base:WEXBaseContentDialog.Resources>
+        <Style x:Key="DescriptionLocalRichTextBlockStyle1" TargetType="RichTextBlock"
+               BasedOn="{StaticResource RichTextBlockStyleBase}">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="LineHeight" Value="26"/>
+        </Style>
+
+        <Style x:Key="DescriptionLocalRichTextBlockStyle2" TargetType="RichTextBlock"
+               BasedOn="{StaticResource RichTextBlockStyleBase}">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="LineHeight" Value="18"/>
+            <Setter Property="Margin" Value="0,20,0,0"/>            
+        </Style>
+    </base:WEXBaseContentDialog.Resources>
+        
+    <!-- #region Titlebar 영역 -->
+    <base:WEXBaseContentDialog.TitleTemplate>
+        <DataTemplate>
+            <Grid MinWidth="550"
+                  MaxWidth="550"
+                  Height="70">
+
+                <TextBlock x:Uid="CtlAboutWExpert"
+                           Style="{StaticResource ContentDialogTitleTextBlockStyle1}"/>
+
+                <!-- TODO .. binding 을 통해 close 시키기 -->
+                <Button Style="{StaticResource DialogCloseButtonStyle1}"
+                        Click="OnClose">
+                    <Image Style="{StaticResource DialogHeaderCloseButtonStyle1}"/>
+                    <ToolTipService.ToolTip>
+                        <ToolTip x:Uid="CtlCloseTooltip" />
+                    </ToolTipService.ToolTip>
+                </Button>
+            </Grid>
+        </DataTemplate>
+    </base:WEXBaseContentDialog.TitleTemplate>
+    <!-- endregion -->
+
+    <!-- Body 영역 -->
+    <StackPanel Padding="25,0,25,15" MinWidth="550" MaxWidth="550">
+        <Image Width="170"
+               Height="36"               
+               HorizontalAlignment="Left"
+               Source="ms-appx:///Assets/Images/logo.png"/>
+        <Rectangle Height="40"/>
+        <RichTextBlock Style="{StaticResource DescriptionLocalRichTextBlockStyle1}"> 
+            <Paragraph>
+                <Run Text="Item Name : "
+                     Foreground="{StaticResource TextTertiary}"
+                     FontSize="14"/>
+                <Run Text="Ultrasound Image Analysis Software (E05040.02, Class II)"
+                     Foreground="{StaticResource TextPrimary}"
+                     FontSize="14"/>
+                
+                <LineBreak />
+                
+                <Run Text="Model Name : "
+                     Foreground="{StaticResource TextTertiary}"
+                     FontSize="14"/>
+                <Run Text="WAIWEX-P"
+                     Foreground="{StaticResource TextPrimary}"
+                     FontSize="14"/>
+                
+                <LineBreak />
+                
+                <Run Text="Lot Number (Version) : "
+                     Foreground="{StaticResource TextTertiary}"
+                     FontSize="14"/>
+                <Run Text="{x:Bind ViewModel.Version, Mode=OneWay}"
+                     Foreground="{StaticResource TextPrimary}"
+                     FontSize="14"/>
+                
+                <LineBreak />
+                
+                <Run Text="Date of Manufacture (Release) : "
+                     Foreground="{StaticResource TextTertiary}"
+                     FontSize="14"/>
+                <Run Text="{x:Bind ViewModel.BuildDate, Mode=OneWay}"
+                     Foreground="{StaticResource TextPrimary}"
+                     FontSize="14"/>
+                
+                <LineBreak />
+                
+                <Run Text="Product Approval Number : "
+                     Foreground="{StaticResource TextTertiary}"
+                     FontSize="14"/>
+                <Run Text="-"
+                     Foreground="{StaticResource TextPrimary}"
+                     FontSize="14"/>
+                
+                <LineBreak />
+                
+                <Run Text="Packaging Unit : "
+                     Foreground="{StaticResource TextTertiary}"
+                     FontSize="14"/>
+                <Run Text="Quantity 1"
+                     Foreground="{StaticResource TextPrimary}"
+                     FontSize="14"/>
+                
+                <LineBreak />
+
+                <Run Text="Item Code : "
+                     Foreground="{StaticResource TextTertiary}"
+                     FontSize="14"/>
+                <Run Text="A1ABDA1"
+                     Foreground="{StaticResource TextPrimary}"
+                     FontSize="14"/>
+                
+                <LineBreak />
+
+                <Run Text="Item Class : "
+                     Foreground="{StaticResource TextTertiary}"
+                     FontSize="14"/>
+                <Run Text="3"
+                     Foreground="{StaticResource TextPrimary}"
+                     FontSize="14"/>
+                
+                <LineBreak />
+
+                <Run Text="Manufacturer : "
+                     Foreground="{StaticResource TextTertiary}"
+                     FontSize="14"/>
+                <Run Text="W.AI Co., Ltd."
+                     Foreground="{StaticResource TextPrimary}"
+                     FontSize="14"/>
+                
+                <LineBreak />
+                
+                <Run Text="Address : "
+                     Foreground="{StaticResource TextTertiary}"
+                     FontSize="14"/>
+                <Run Text="403, 4F, Building C, 47, Maeheon-ro 8-gil, Seocho-gu, Seoul, Republic of Korea"
+                     Foreground="{StaticResource TextPrimary}"
+                     FontSize="14"/>
+                
+                <LineBreak />
+                
+                <Run Text="Contact : "
+                     Foreground="{StaticResource TextTertiary}"
+                     FontSize="14"/>
+                <Run Text="02-2039-0460"
+                     Foreground="{StaticResource TextPrimary}"
+                     FontSize="14"/>
+            </Paragraph>
+        </RichTextBlock>
+        
+        <StackPanel Orientation="Horizontal">
+            <RichTextBlock Style="{StaticResource DescriptionLocalRichTextBlockStyle1}">
+                <Paragraph>
+                    <Run Text="Medical Device UDI :"
+                         Foreground="{StaticResource TextTertiary}"
+                         FontSize="14"/>
+                </Paragraph>
+            </RichTextBlock>
+            <Grid Background="White"
+                  Width="60"
+                  Height="60"
+                  Margin="10,0,10,0">
+                <Image Source="ms-appx:///Assets/Images/AboutQR.png"
+                       Stretch="Uniform"
+                       Margin="5"/>
+            </Grid>
+            <RichTextBlock Style="{StaticResource DescriptionLocalRichTextBlockStyle1}"
+                           Foreground="{StaticResource TextPrimary}"
+                           LineHeight="20"
+                           FontSize="14">
+                <Paragraph>
+                    <Run Text="(01)08809990820115"/>                    
+                    <LineBreak />
+                    <Run Text="(11)250610"/>                    
+                    <LineBreak />
+                    <Run Text="(10)V.1.5.0"/>
+                </Paragraph>
+            </RichTextBlock>
+        </StackPanel>
+
+        <RichTextBlock Style="{StaticResource DescriptionLocalRichTextBlockStyle2}">
+            <Paragraph>
+                <Run Text="This product is a digital medical device software intended for use by professionals only."
+                     Foreground="{StaticResource TextPrimary}"                     
+                     FontSize="14"/>
+            </Paragraph>
+        </RichTextBlock>
+
+    </StackPanel>
+</base:WEXBaseContentDialog>

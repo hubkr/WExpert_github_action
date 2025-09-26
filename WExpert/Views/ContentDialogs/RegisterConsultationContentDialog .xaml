@@ -1,0 +1,213 @@
+<base:WEXBaseContentDialog
+    x:Class="WExpert.Views.ContentDialogs.RegisterConsultationContentDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:base="using:WExpert.Views.Base"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:viewModels="using:WExpert.ViewModels"
+    xmlns:models="using:WExpert.Models"
+    xmlns:converter="using:WExpert.Binding.Converter"
+    IsPrimaryButtonEnabled="{x:Bind ViewModel.EnableRegisterButton, Mode=OneWay}"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
+    Loaded="Dialog_Loaded">
+
+    <base:WEXBaseContentDialog.Resources>
+        <converter:WEXRegisterConsultationConverter x:Key="wexRegisterConsultationConverter"/>
+
+        <!-- TextBlock Style -->
+        <Style x:Key="RegisterConsultationLocalTextBlockStyle1"
+               TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource DefaultFont}" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="LineHeight" Value="24" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Foreground" Value="{StaticResource TextTertiary}" />
+        </Style>
+
+        <Style x:Key="RegisterConsultationLocalTextBlockStyle2"
+               TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+        </Style>
+        
+        <!-- TextBox Style -->
+        <Style x:Key="RegisterConsultationLocalTextBoxStyle1" TargetType="TextBox"
+               BasedOn="{StaticResource WEXLineTextBoxStyle1}">
+            <Setter Property="Height" Value="204"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="12,12,12,30"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Visible"/>
+        </Style>
+        
+        <!-- Button Style -->
+        <Style x:Key="RegisterConsultationLocaButtonStyle1" TargetType="Button"
+           BasedOn="{StaticResource CommonDialogButtonStyle1}">
+            <Setter Property="Width" Value="24"/>
+            <Setter Property="Height" Value="24" />
+            <Setter Property="CornerRadius" Value="3" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Background" Value="{StaticResource TypeTransparent30}" />
+        </Style>        
+    </base:WEXBaseContentDialog.Resources>
+    
+    <!--
+    <ContentDialog.DataContext>
+        <viewModels:RegisterConsultationContentViewModel x:Name="ViewModel"/>
+    </ContentDialog.DataContext>
+    -->
+    
+    <!-- #region Titlebar 영역 -->
+    <base:WEXBaseContentDialog.TitleTemplate>
+        <DataTemplate>
+            <!-- Title text, Close button -->
+            <Grid MaxWidth="550" MinWidth="550" Margin="0,20,0,0">
+
+                <TextBlock x:Uid="CtlNewConsultationTitle"
+                            Style="{StaticResource ContentDialogTitleTextBlockStyle1}"/>
+
+                <Button Style="{StaticResource DialogCloseButtonStyle1}"
+                        Click="OnClose">
+                    <Image Style="{StaticResource DialogHeaderCloseButtonStyle1}"/>
+                    <ToolTipService.ToolTip>
+                        <ToolTip x:Uid="CtlCloseTooltip"/>
+                    </ToolTipService.ToolTip>
+                </Button>
+            </Grid>
+        </DataTemplate>
+    </base:WEXBaseContentDialog.TitleTemplate>
+    <!-- #endregion -->
+    
+    <!-- #region Body 영역 -->
+    <ScrollViewer>
+        <Grid Margin="24,0,24,0" Width="502">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="14"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="204"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="24"/>
+                <RowDefinition Height="15"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <TextBlock FontSize="12" Foreground="{StaticResource SolidLtSolid}">
+                    <Run x:Uid="CtlRegisteredInquiry"/>
+                    <Run Text="{x:Bind ViewModel.ConsultationUsed, Mode=OneWay}" Foreground="{StaticResource TextPrimary}"/>
+                    <Run Text="/"/>
+                    <Run Text="{x:Bind ViewModel.ConsultationQuota, Mode=OneWay}"/>                
+                </TextBlock>
+                <Rectangle Width="10"/>
+                <TextBlock FontSize="12"
+                           Foreground="{StaticResource SolidLtSolid}"
+                           Visibility="{x:Bind ViewModel.ExceededCount, Mode=OneWay,
+                                        Converter={StaticResource wexRegisterConsultationConverter}, ConverterParameter='ViewExceededCount'}">
+                    <Run Text="( Exceeded :"/>
+                    <Run Text="{x:Bind ViewModel.ExceededCount, Mode=OneWay}"
+                         Foreground="{StaticResource ComponentsYellow}"/>
+                    <Run Text=")"/>
+                </TextBlock>
+            </StackPanel>
+        
+            <Grid Grid.Row="2">
+                <TextBlock x:Uid="CtlQuestion"
+                           Style="{StaticResource RegisterConsultationLocalTextBlockStyle1}"/>
+            </Grid>
+              
+            <Grid Grid.Row="5">            
+                <TextBox x:Name="QuestionTextBox"
+                         Style="{StaticResource RegisterConsultationLocalTextBoxStyle1}"
+                         PlaceholderText="{x:Bind ViewModel.QuestionTexPlaceholder, Mode=OneWay}"
+                         MaxLength="{x:Bind ViewModel.MaxQuestionLength, Mode=OneWay}"
+                         Text="{x:Bind ViewModel.QuestionText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <TextBlock Style="{StaticResource ContentDialogLabelTextStyle2}"
+                           Margin="0,0,10,10" HorizontalAlignment="Right" VerticalAlignment="Bottom"> 
+                                <Run Foreground="{x:Bind ViewModel.CurrentInputQuestionLength, Mode=OneWay,
+                                                  Converter={StaticResource wexRegisterConsultationConverter},
+                                                  ConverterParameter='InputQuestionLengthColor'}"
+                                     Text="{x:Bind ViewModel.CurrentInputQuestionLength, Mode=OneWay}"/>
+                                <Run Foreground="{StaticResource SolidLtSolid}"
+                                     Text="/" />
+                                <Run Foreground="{StaticResource SolidLtSolid}"
+                                     Text="{x:Bind ViewModel.MaxQuestionLength, Mode=OneWay}"/>
+                </TextBlock>            
+            </Grid>
+
+            <StackPanel Grid.Row="7" Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="Common inquiries" Foreground="{StaticResource TextTertiary}"/>
+                <Rectangle Width="12"/>
+
+                <FontIcon FontSize="16" FontFamily="Segoe MDL2 Assets" Glyph="&#xE946;" Foreground="{StaticResource SolidLtSolid}"/>
+                <Rectangle Width="5"/>
+                <TextBlock Text="Click “+” button for automatic question apply" Foreground="{StaticResource SolidLtSolid}"/>
+            </StackPanel>
+
+            <ItemsRepeater Grid.Row="9"
+                           ItemsSource="{x:Bind ViewModel.ExampleQuestions, Mode=OneWay}">
+                <ItemsRepeater.ItemTemplate>
+                    <DataTemplate x:DataType="models:InquiryExampleItem">
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                            <Button Style="{StaticResource RegisterConsultationLocaButtonStyle1}"
+                                    Tag="{x:Bind ExampleText}"
+                                    Click="AddQuestion_Click">
+                                <Image Width="16"
+                                   Height="16"
+                                   Source="ms-appx:///Assets/Images/Plus.png"/>
+                                <ToolTipService.ToolTip>
+                                    <ToolTip x:Uid="CtlAddQuestion" />
+                                </ToolTipService.ToolTip>
+                            </Button>
+                            <Rectangle Width="10"/>
+                            <TextBlock Text="{x:Bind ExampleText}" Style="{StaticResource RegisterConsultationLocalTextBlockStyle2}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsRepeater.ItemTemplate>
+            </ItemsRepeater>
+
+            <ProgressRing Grid.RowSpan="11" IsActive="{x:Bind ViewModel.RegisteringProgressRing, Mode=OneWay}"
+                                  Style="{StaticResource WEXProgressRingStyle1}"/>
+
+            <TeachingTip x:Name="ErrorTeachingTip"
+                         PlacementMargin="10"
+                         PreferredPlacement="Top"
+                         IsOpen="False"
+                         Style="{StaticResource TeachingTipErrorStyle1}" >
+                <TeachingTip.Content>
+                    <Grid HorizontalAlignment="Left">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0"
+                                  VerticalAlignment="Top"
+                                  Margin="0,0,12,0">
+                            <Image Source="ms-appx:///Assets/Images/TitleIconWarnWhite.png"   
+                                       Width="24"
+                                       Height="24"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <TextBlock x:Name="ErrorMessage"
+                                       TextWrapping="Wrap" 
+                                       Style="{StaticResource ContentDialogLabelTextStyle5}"
+                                       Margin="0,0,30,0" 
+                                       Text=""/>
+                        </Grid>
+                    </Grid>
+                </TeachingTip.Content>
+            </TeachingTip>
+
+        </Grid>
+    </ScrollViewer>
+    <!-- #endregion -->
+    
+</base:WEXBaseContentDialog>

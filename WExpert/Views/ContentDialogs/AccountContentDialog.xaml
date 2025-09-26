@@ -1,0 +1,125 @@
+<base:WEXBaseContentDialog
+    x:Class="wai.Views.ContentDialogs.AccountContentDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:base="using:WExpert.Views.Base"
+    xmlns:viewModels="using:WExpert.ViewModels"
+    xmlns:wexcontrols="using:WExpert.Controls"
+    Loaded="Dialog_Loaded">
+
+    <base:WEXBaseContentDialog.Resources>
+        <!-- TextBlock -->
+        <Style x:Key="AccountContentLocalBlockStyle1" TargetType="TextBlock"
+               BasedOn="{StaticResource TextBlockStyleBase}">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="AccountContentLocalBlockStyle2" TargetType="TextBlock"
+               BasedOn="{StaticResource TextBlockStyleBase}">
+            <Setter Property="FontSize" Value="34"/>
+            <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+            <Setter Property="FontFamily" Value="{StaticResource GeistFont}"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="30,0,0,0"/>
+        </Style>
+
+        <!-- ListView Item -->
+        <Style x:Key="AccountContentLocalListViewItem1" TargetType="ListViewItem"
+               BasedOn="{StaticResource WEXBaseListViewItemStyle2}">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="FontFamily" Value="{StaticResource DefaultFont}" />
+            <Setter Property="Foreground" Value="{StaticResource ComponentsLtWhite}" />
+            <Setter Property="Height" Value="60" />
+            <Setter Property="Margin" Value="-3,0,0,0" />
+            <Setter Property="Padding" Value="35,0,0,0" />
+        </Style>
+
+    </base:WEXBaseContentDialog.Resources>
+    
+    <!-- #region Titlebar 영역 -->
+    <base:WEXBaseContentDialog.TitleTemplate>
+        <DataTemplate>
+            <Grid Width="880" Height="100">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="280"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0"
+                      Background="{StaticResource BgBase}">
+                    <TextBlock x:Uid="CtlAccount"
+                               Style="{StaticResource AccountContentLocalBlockStyle2}"/>
+                </Grid>
+
+                <Grid Grid.Column="2">
+                    <!-- TODO .. binding 을 통해 close 시키기 -->
+                    <Button Style="{StaticResource DialogCloseButtonStyle1}"
+                            Click="OnClose">
+                        <Image Style="{StaticResource DialogHeaderCloseButtonStyle1}"/>
+                        <ToolTipService.ToolTip>
+                            <ToolTip x:Uid="CtlCloseTooltip" />
+                        </ToolTipService.ToolTip>
+                    </Button>
+                </Grid>
+            </Grid>
+        </DataTemplate>
+    </base:WEXBaseContentDialog.TitleTemplate>
+    <!-- endregion -->
+
+    <!-- #region Body 영역 -->
+    <Grid Height="700">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition Width="600"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Background="{StaticResource BgBase}">
+            <ListView x:Name="menuList"
+                      ItemContainerStyle="{StaticResource AccountContentLocalListViewItem1}"
+                      SelectionChanged="MenuList_SelectionChanged">
+                <ListViewItem Tag="0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ms-appx:///Assets/Images/Profile2.png"
+                               Width="24"
+                               Height="24"
+                               Margin="0,0,10,0"/>
+                        <TextBlock x:Uid="CtlAccount"
+                                   Style="{StaticResource AccountContentLocalBlockStyle1}"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Tag="1">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ms-appx:///Assets/Images/Hospital.png"
+                               Width="24"
+                               Height="24"
+                               Margin="0,0,10,0"/>
+                        <TextBlock x:Uid="CtlHospital"
+                                   Style="{StaticResource AccountContentLocalBlockStyle1}"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Tag="2">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ms-appx:///Assets/Images/Information.png"
+                               Width="24"
+                               Height="24"
+                               Margin="0,0,10,0"/>
+                        <TextBlock x:Uid="CtlLicense"
+                                   Style="{StaticResource AccountContentLocalBlockStyle1}"/>
+                    </StackPanel>
+                </ListViewItem>
+            </ListView>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Frame x:Name="DetailFrame"/>
+            <ProgressRing IsActive="{x:Bind ViewModel.ActiveProgressBar, Mode=OneWay}"
+                                      Style="{StaticResource WEXProgressRingStyle1}"/>
+        </Grid>
+    </Grid>
+    
+
+    <!-- endregion -->
+</base:WEXBaseContentDialog>

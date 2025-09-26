@@ -1,0 +1,22 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- 
+    // FontWeight //
+        100	Thin,
+        200	ExtraLight or UltraLight,
+        300	Light, 
+        400	Normal or Regular,
+        500	Medium, 
+        600	SemiBold or DemiBold
+        700	Bold
+        800	ExtraBold or UltraBold
+        900	Black
+        950	ExtraBlack or UltraBlack
+    -->
+    
+    <FontFamily x:Key="DefaultFont">ms-appx:///Assets/Font/Roboto/RobotoFlex-VariableFont.ttf#Roboto Flex</FontFamily>
+    <FontFamily x:Key="GeistFont">ms-appx:///Assets/Font/Geist/Geist[wght].ttf#Geist</FontFamily>
+
+</ResourceDictionary>

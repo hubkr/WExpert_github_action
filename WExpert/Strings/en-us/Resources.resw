@@ -1,0 +1,1031 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>W Expert</value>
+  </data>
+  <data name="AppName" xml:space="preserve">
+    <value>WExpert</value>
+  </data>
+  <data name="CtlPatientList.Text" xml:space="preserve">
+    <value>Patient List</value>
+    <comment>Page title for ResultListPage</comment>
+  </data>
+  <data name="StringRetry" xml:space="preserve">
+    <value>Retry</value>
+  </data>
+  <data name="StringCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="StringUpdate" xml:space="preserve">
+    <value>Update</value>
+  </data>	
+  <data name="CtlId.Text" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="StringLoginFailNotMatch" xml:space="preserve">
+    <value>You entered an invalid ID or password.</value>
+  </data>
+  <data name="StringLoginFailUnProcessableContent" xml:space="preserve">
+    <value>This account has been suspended. Please kindly contact the hospital.</value>
+  </data>
+  <data name="StringLoginFailGone" xml:space="preserve">
+    <value>This account has been inactivated. Please kindly contact the hospital.</value>
+  </data>
+  <data name="StringLoginFailForbidden" xml:space="preserve">
+    <value>The license has expired. Please kindly contact the hospital.</value>
+  </data>
+  <data name="StringEnterID" xml:space="preserve">
+    <value>Please enter your ID.</value>
+  </data>
+  <data name="StringEnterPassword" xml:space="preserve">
+    <value>Please enter your password.</value>
+  </data>
+  <data name="StringOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="StringAdd" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="CtlPassword.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="CtlLoginButton.Content" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="CtlCopyright.Text" xml:space="preserve">
+    <value>Copyright © 2024 W.AI. All Rights Reserved.
+Product and brand names/logos are trademarks or registered trademarks of W.AI or their respective owner.</value>
+  </data>
+  <data name="StringZoom.Text" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="CtlAccount.Text" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="CtlSignout.Text" xml:space="preserve">
+    <value>Sign out</value>
+  </data>
+  <data name="CtlRegistrionPatient.Text" xml:space="preserve">
+    <value>New registration</value>
+  </data>
+  <data name="StringRegistration" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+  <data name="CtlAnalysisTab.Header" xml:space="preserve">
+    <value>Analysis Result</value>
+  </data>
+  <data name="StringConfirmDeleteTitle" xml:space="preserve">
+    <value>Confirm delete</value>
+  </data>
+  <data name="StringConfirmDeleteMessage" xml:space="preserve">
+    <value>Are you sure you want to delete the selected file(s)?
+This action cannot be undone.</value>
+  </data>
+  <data name="CtlSearchButtonTooltip.Content" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="CtlPreviousButtonTooltip.Content" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="CtlNextButtonTooltip.Content" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="CtlBrightness.Text" xml:space="preserve">
+    <value>Brightness</value>
+  </data>
+  <data name="CtlZoomTooltip.Content" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="CtlTaskProgressRing.ProgressMessage" xml:space="preserve">
+    <value>Task progressing</value>
+  </data>
+  <data name="CtlContrast.Text" xml:space="preserve">
+    <value>Contrast</value>
+  </data>
+  <data name="CtlSharpness.Text" xml:space="preserve">
+    <value>Sharpness</value>
+  </data>
+  <data name="CtlSourceFile.Text" xml:space="preserve">
+    <value>Files</value>
+  </data>
+  <data name="CtlConsultation.Text" xml:space="preserve">
+    <value>Consultation</value>
+  </data>
+  <data name="CtlConsultationTab.Header" xml:space="preserve">
+    <value>Consultation</value>
+  </data>
+  <data name="CtlNewConsultation.Content" xml:space="preserve">
+    <value>New consultation</value>
+  </data>
+  <data name="CtlNewConsultationTitle.Text" xml:space="preserve">
+    <value>New consultation</value>
+  </data>
+  <data name="CtlName.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="CtlType.Text" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="CtlNote.Text" xml:space="preserve">
+    <value>Dr.Kim's Note</value>
+  </data>
+  <data name="StringSaveFileErrorMessage" xml:space="preserve">
+    <value>An error occurred while saving file data.</value>
+  </data>
+  <data name="StringConfirmSignOutMessage" xml:space="preserve">
+    <value>Are you sure you want to sign out?</value>
+  </data>
+  <data name="StringConfirmSignOutTitle" xml:space="preserve">
+    <value>Confirm sign out</value>
+  </data>
+  <data name="CtlCloseTooltip.Content" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="CtlClose.Content" xml:space="preserve">
+    <value>Close</value>
+  </data>	
+  <data name="CtlThickness.Text" xml:space="preserve">
+    <value>Thickness</value>
+  </data>
+  <data name="CtlColor.Text" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="CtlRupture.Content" xml:space="preserve">
+    <value>Rupture</value>
+  </data>
+  <data name="CtlNormal.Content" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="CtlTC.Content" xml:space="preserve">
+    <value>Thickened capsule</value>
+  </data>
+  <data name="FilePath.PlaceholderText" xml:space="preserve">
+    <value>File path</value>
+  </data>
+  <!--
+  <data name="NoteTextBox.PlaceholderText" xml:space="preserve">
+    <value>Up to 500 characters</value>
+  </data>
+  -->
+  <data name="ReportTextBox.PlaceholderText" xml:space="preserve">
+    <value>Up to 1000 characters</value>
+  </data>		
+  <data name="PatientName.PlaceholderText" xml:space="preserve">
+    <value>Patient name</value>
+  </data>
+  <data name="StringDropFile" xml:space="preserve">
+    <value>Drop files here</value>
+  </data>
+  <data name="CtlAddFile.Content" xml:space="preserve">
+    <value>Add file</value>
+  </data>
+  <data name="CtlAddNewFile.Content" xml:space="preserve">
+    <value>Add new file</value>
+  </data>	
+  <data name="CtlDelete.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="CtlPrintReport.Content" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="CtlPrintReportBtn.Text" xml:space="preserve">
+    <value>Report</value>
+  </data>	
+  <data name="StringNewRegistrationFileLimit2" xml:space="preserve">
+    <value>File count exceeded.
+The maximum number of files you can add is {0}.</value>
+  </data>
+  <data name="StringNoImage" xml:space="preserve">
+    <value>No image.</value>
+  </data>
+  <data name="StringNoRegisteredFile" xml:space="preserve">
+    <value>No ultrasound images are registered.</value>
+  </data>
+  <data name="StringLoginFailPaymentRequired" xml:space="preserve">
+    <value>There is no available license. Please kindly contact the hospital.</value>
+  </data>
+  <data name="StringUnauthorizedTitle" xml:space="preserve">
+    <value>Access Denied</value>
+  </data>
+  <data name="StringForbiddenTitle" xml:space="preserve">
+    <value>Forbidden</value>
+  </data>
+  <data name="StringUnauthorizedMessage" xml:space="preserve">
+    <value>Unauthorized request. Please log in again.</value>
+  </data>
+  <data name="StringForbiddenMessage" xml:space="preserve">
+    <value>You do not have permission to make that request.</value>
+  </data>
+  <data name="StringNoName" xml:space="preserve">
+    <value>NoName</value>
+  </data>
+  <data name="CtlNone.Text" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="StringNegative" xml:space="preserve">
+    <value>Negative</value>
+  </data>
+  <data name="StringPositive" xml:space="preserve">
+    <value>Positive</value>
+  </data>
+  <data name="StringAnalysisCompletedTooltip" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="StringAnalysisAnalyzingTooltip" xml:space="preserve">
+    <value>Analyzing</value>
+  </data>
+  <data name="StringAnalysisIncompleteTooltip" xml:space="preserve">
+    <value>Incomplete</value>
+  </data>
+  <data name="CtlRuptureDotTooltip.Content" xml:space="preserve">
+    <value>Rupture positive</value>
+  </data>
+  <data name="CtlTCDotTooltip.Content" xml:space="preserve">
+    <value>Thickened capsule positive</value>
+  </data>
+  <data name="StringFileName" xml:space="preserve">
+    <value>File name</value>
+  </data>
+  <data name="CtlFileName.Text" xml:space="preserve">
+    <value>File name</value>
+  </data>
+  <data name="CtlAddedFile.Text" xml:space="preserve">
+    <value>Added image</value>
+  </data>
+  <data name="CtlAboutWExpert.Text" xml:space="preserve">
+    <value>About W Expert</value>
+  </data>
+  <data name="CtlForgotPassword.Content" xml:space="preserve">
+    <value>Forgot password?</value>
+  </data>
+  <data name="CtlApplyInformation.Content" xml:space="preserve">
+    <value>Apply Information</value>
+  </data>
+  <data name="CtlAboutProgram.Text" xml:space="preserve">
+    <value>Program</value>
+  </data>
+  <data name="CtlDeletePatient.Text" xml:space="preserve">
+    <value>Delete selected patient item(s)</value>
+  </data>
+  <data name="CtlViewNote.Content" xml:space="preserve">
+    <value>View Note</value>
+  </data>	
+  <data name="CtlDeleteTooltip.Content" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="StringForgotPassword" xml:space="preserve">
+    <value>Forgot password?</value>
+  </data>
+  <data name="StringConfirmDeletePatientItemsMessage" xml:space="preserve">
+    <value>Are you sure you want to delete the selected patient(s)?
+This action cannot be undone.</value>
+  </data>
+  <data name="CtlDateCreated.Text" xml:space="preserve">
+    <value>Date created</value>
+  </data>
+  <data name="CtlDateCreatedMenu.Content" xml:space="preserve">
+    <value>Date created</value>
+  </data>
+  <data name="CtlNameMenu.Content" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="CtlAnalysisMenu.Content" xml:space="preserve">
+    <value>Analysis</value>
+  </data>
+  <data name="CtlTriageMenu.Content" xml:space="preserve">
+    <value>Triage</value>
+  </data>
+  <data name="CtlAscendingMenu.Content" xml:space="preserve">
+    <value>Ascending</value>
+  </data>
+  <data name="CtlDescendingMenu.Content" xml:space="preserve">
+    <value>Descending</value>
+  </data>
+  <data name="CtlAnalysis.Text" xml:space="preserve">
+    <value>Analysis</value>
+  </data>
+  <data name="CtlWExpertId.Text" xml:space="preserve">
+    <value>W Expert ID</value>
+  </data>
+  <data name="CtlTriage.Text" xml:space="preserve">
+    <value>Triage</value>
+  </data>
+  <data name="StringTCCase" xml:space="preserve">
+    <value>Thickened capsule positive({0} case(s))</value>
+  </data>
+  <data name="StringRuptureCase" xml:space="preserve">
+    <value>Rupture Positive ({0} case(s))</value>
+  </data>
+  <data name="CtlAddClipboardData.Text" xml:space="preserve">
+    <value>Add clipboard data</value>
+  </data>
+  <data name="FileName.PlaceholderText" xml:space="preserve">
+    <value>File name</value>
+  </data>
+  <data name="CtlContrastTooltip.Content" xml:space="preserve">
+    <value>Contrast</value>
+  </data>
+  <data name="CtlBrightnessTooltip.Content" xml:space="preserve">
+    <value>Brightness</value>
+  </data>
+  <data name="CtlSharpnessTooltip.Content" xml:space="preserve">
+    <value>Sharpness</value>
+  </data>
+  <data name="StringFileSize" xml:space="preserve">
+    <value>File size</value>
+  </data>
+  <data name="StringImageSize" xml:space="preserve">
+    <value>Image size</value>
+  </data>
+  <data name="StringItemType" xml:space="preserve">
+    <value>Item type</value>
+  </data>
+  <data name="StringItemType7Z" xml:space="preserve">
+    <value>7Z Archive</value>
+  </data>
+  <data name="StringItemTypeAvi" xml:space="preserve">
+    <value>AVI Video File</value>
+  </data>
+  <data name="StringItemTypeBmp" xml:space="preserve">
+    <value>BMP Image</value>
+  </data>
+  <data name="StringItemTypeCSS" xml:space="preserve">
+    <value>CSS File</value>
+  </data>
+  <data name="StringItemTypeDicom" xml:space="preserve">
+    <value>DICOM File</value>
+  </data>
+  <data name="StringItemTypeExcel" xml:space="preserve">
+    <value>Excel Spreadsheet</value>
+  </data>
+  <data name="StringItemTypeFlash" xml:space="preserve">
+    <value>Flash File</value>
+  </data>
+  <data name="StringItemTypeGif" xml:space="preserve">
+    <value>GIF Image</value>
+  </data>
+  <data name="StringItemTypeHtml" xml:space="preserve">
+    <value>HTML File</value>
+  </data>
+  <data name="StringItemTypeJavaScript" xml:space="preserve">
+    <value>JavaScript File</value>
+  </data>
+  <data name="StringItemTypeJpeg" xml:space="preserve">
+    <value>JPEG Image</value>
+  </data>
+  <data name="StringItemTypeJson" xml:space="preserve">
+    <value>JSON File</value>
+  </data>
+  <data name="StringItemTypeMkv" xml:space="preserve">
+    <value>MKV Video File</value>
+  </data>
+  <data name="StringItemTypeMp3" xml:space="preserve">
+    <value>MP3 Audio File</value>
+  </data>
+  <data name="StringItemTypeMp4" xml:space="preserve">
+    <value>MP4 Video File</value>
+  </data>
+  <data name="StringItemTypeOgg" xml:space="preserve">
+    <value>OGG Audio File</value>
+  </data>
+  <data name="StringItemTypePdf" xml:space="preserve">
+    <value>PDF Document</value>
+  </data>
+  <data name="StringItemTypePng" xml:space="preserve">
+    <value>PNG Image</value>
+  </data>
+  <data name="StringItemTypePowerPoint" xml:space="preserve">
+    <value>PowerPoint Presentation</value>
+  </data>
+  <data name="StringItemTypeRar" xml:space="preserve">
+    <value>RAR Archive</value>
+  </data>
+  <data name="StringItemTypeSvg" xml:space="preserve">
+    <value>SVG Image</value>
+  </data>
+  <data name="StringItemTypeTar" xml:space="preserve">
+    <value>TAR Archive</value>
+  </data>
+  <data name="StringItemTypeText" xml:space="preserve">
+    <value>Text File</value>
+  </data>
+  <data name="StringUnknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="StringItemTypeWav" xml:space="preserve">
+    <value>WAV Audio File</value>
+  </data>
+  <data name="StringItemTypeWebM" xml:space="preserve">
+    <value>WebM Video File</value>
+  </data>
+  <data name="StringItemTypeWord" xml:space="preserve">
+    <value>Word Document</value>
+  </data>
+  <data name="StringItemTypeXml" xml:space="preserve">
+    <value>XML File</value>
+  </data>
+  <data name="StringItemTypeZip" xml:space="preserve">
+    <value>ZIP Archive</value>
+  </data>
+  <data name="CtlReAnalysis.Text" xml:space="preserve">
+    <value>Reanalysis</value>
+  </data>
+  <data name="StringTotalResultProcessing" xml:space="preserve">
+    <value>Processing ({0}/{1})</value>
+  </data>
+  <data name="StringTotalResultFinished" xml:space="preserve">
+    <value>Finished ({0}/{1})</value>
+  </data>
+  <data name="StringTotalResultFailed" xml:space="preserve">
+    <value>{0} file{1} failed analysis.</value>
+  </data>
+  <data name="CtlFitToScreenTooltip.Content" xml:space="preserve">
+    <value>Fit to screen</value>
+  </data>
+  <data name="CtlRealSizeTooltip.Content" xml:space="preserve">
+    <value>Real size</value>
+  </data>
+  <data name="CtlExportImageTooltip.Content" xml:space="preserve">
+    <value>Export image</value>
+  </data>
+  <data name="CtlExport.Content" xml:space="preserve">
+    <value>Export</value>
+  </data>
+	<data name="StringCustomZoom" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="CtlFlipHorizontalTooltip.Content" xml:space="preserve">
+    <value>Flip Horizontal</value>
+  </data>
+  <data name="CtlFlipVerticalTooltip.Content" xml:space="preserve">
+    <value>Flip Vertical</value>
+  </data>
+  <data name="StringCommonErrorTitle" xml:space="preserve">
+    <value>An error occurred</value>
+  </data>
+  <data name="StringCommonErrorMessage" xml:space="preserve">
+    <value>We couldn't process your request.Please try again later.</value>
+  </data>
+  <data name="StringInternalServerErrorTitle" xml:space="preserve">
+    <value>Internal error</value>
+  </data>
+  <data name="StringInternalServerErrorMessage" xml:space="preserve">
+    <value>There was an internal server error, please try again later.</value>
+  </data>
+  <data name="StringDuplicateLoginTitle" xml:space="preserve">
+    <value>Duplicate Login Detected</value>
+  </data>
+  <data name="StringDuplicateLoginMessage" xml:space="preserve">
+    <value>You are logged in on another device.
+Logging in will log you out on the other device.
+Do you want to proceed?
+    </value>
+  </data>
+  <data name="StringInfoNotExist" xml:space="preserve">
+    <value>Information does not exist</value>
+  </data>
+  <data name="CtlResultNotFound.Text" xml:space="preserve">
+    <value>There are no registered patients.</value>
+  </data>
+  <data name="StringNotPerformedTitle" xml:space="preserve">
+    <value>Cannot Proceed</value>
+  </data>
+  <data name="StringNotDeleteFileTitle" xml:space="preserve">
+    <value>Minimum File Required</value>
+  </data>	
+  <data name="StringFileNotSelectDeleteMessage" xml:space="preserve">
+    <value>Please select at least one item.</value>
+  </data>
+  <data name="StringFileNotDeleteMessage" xml:space="preserve">
+    <value>You must have at least one registered file.</value>
+  </data>
+  <data name="ROIMarkingOutline.Text" xml:space="preserve">
+    <value>ROI Marking outlines</value>
+  </data>
+  <data name="CtlIDHint.PlaceholderText" xml:space="preserve">
+    <value>Enter your ID</value>
+  </data>
+  <data name="CtlEmailHint.PlaceholderText" xml:space="preserve">
+    <value>Enter your email</value>
+  </data>
+  <data name="CtlCodeHint.PlaceholderText" xml:space="preserve">
+    <value>Enter the 6-digit code</value>
+  </data>
+  <data name="CtlSearchTextBoxHint.PlaceholderText" xml:space="preserve">
+    <value>W Expert ID or Name</value>
+  </data>
+  <data name="CtlPasswordHint.PlaceholderText" xml:space="preserve">
+    <value>Enter password</value>
+  </data>
+  <data name="CtlCurrentPasswordHint.PlaceholderText" xml:space="preserve">
+    <value>Enter current password</value>
+  </data>
+  <data name="CtlNewPasswordHint.PlaceholderText" xml:space="preserve">
+    <value>Enter new password</value>
+  </data>
+  <data name="CtlConfirmNewPasswordHint.PlaceholderText" xml:space="preserve">
+    <value>Enter confirm new password</value>
+  </data>
+  <data name="CtlClickHere.Content" xml:space="preserve">
+    <value>click here</value>
+  </data>
+  <data name="CtlClearTooltip.Content" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="CtlAddPatient.Text" xml:space="preserve">
+    <value>Add patient</value>
+  </data>
+  <data name="StringCurrentPageStatus" xml:space="preserve">
+    <value>{0}-{1} of {2}</value>
+  </data>
+  <data name="CtlForgetPasswordDesciption.Text" xml:space="preserve">
+    <value>To change the password E-mail certification is required.
+Please enter the certification code sent to the email.</value>
+  </data>
+  <data name="CtlChangePasswordDesciption.Text" xml:space="preserve">
+    <value>Password must be 8~16 characters, including english letters (both uppercase and lowercase), numbers, and special characters.</value>
+  </data>
+  <data name="StringChangePasswordDesciption" xml:space="preserve">
+    <value>Password must be 8~16 characters, including english letters (both uppercase and lowercase), numbers, and special characters.</value>
+  </data>
+  <data name="CtlEmail.Text" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="CtlNewPassword.Text" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="CtlConfirmPassword.Text" xml:space="preserve">
+    <value>Confirm new password</value>
+  </data>
+  <data name="CtlCode.Text" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="StringInputValidityTime" xml:space="preserve">
+    <value>Expires in: {0}</value>
+  </data>
+  <data name="CtlVertification.Content" xml:space="preserve">
+    <value>Vertification</value>
+  </data>
+  <data name="CtlChangePasswordBtn.Content" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="StringSendCode" xml:space="preserve">
+    <value>Send Code</value>
+  </data>
+  <data name="StringResendCode" xml:space="preserve">
+    <value>Resend Code</value>
+  </data>
+  <data name="StringNotMachNewPassword" xml:space="preserve">
+    <value>The password you entered does not match.</value>
+  </data>
+  <data name="StringNotMachCurrentPassword" xml:space="preserve">
+    <value>Incorrect current password.</value>
+  </data>
+  <data name="StringInvalidPasswordRule" xml:space="preserve">
+    <value>The password does not comply with the rules.</value>
+  </data>
+  <data name="CtlHospital.Text" xml:space="preserve">
+    <value>Hospital</value>
+  </data>
+  <data name="CtlLicense.Text" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="CtlRowPerPage.Text" xml:space="preserve">
+    <value>Row per page :</value>
+  </data>
+  <data name="StringRegistrationFileLimit" xml:space="preserve">
+    <value>Up to 30 files can be regisered</value>
+  </data>
+  <data name="StringStatusCompleted" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="StringStatusAnalyzing" xml:space="preserve">
+    <value>Analyzing</value>
+  </data>
+  <data name="StringStatusIncomplete" xml:space="preserve">
+    <value>Incomplete</value>
+  </data>
+  <data name="StringInvalidAuthenticationCode" xml:space="preserve">
+    <value>You entered an invalid Code.</value>
+  </data>
+  <data name="StringTooManyRequest" xml:space="preserve">
+    <value>The maximum number of authentication requests has been reached {0} times.
+Please try again in {1}.</value>
+  </data>
+  <data name="StringInvalidIdEmail" xml:space="preserve">
+    <value>You entered an invalid ID or E-mail</value>
+  </data>
+  <data name="StringAuthenticationTimeExpired" xml:space="preserve">
+    <value>The input time has been exceeded. Please re-certify E-mail again.</value>
+  </data>
+  <data name="StringSamePassword" xml:space="preserve">
+    <value>It's the same as the current password.</value>
+  </data>
+  <data name="StringPasswordChangedTitle" xml:space="preserve">
+    <value>Password changed</value>
+  </data>
+  <data name="StringPasswordChangedMessage" xml:space="preserve">
+    <value>The password has been changed.</value>
+  </data>
+  <data name="StringEnterNewPassword" xml:space="preserve">
+    <value>Please enter New password.</value>
+  </data>
+  <data name="StringEnterConfirmNewPassword" xml:space="preserve">
+    <value>Please enter confirm new password.</value>
+  </data>
+  <data name="CtlAccountDesciption.Text" xml:space="preserve">
+    <value>You can verify your account information and change your password.</value>
+  </data>
+  <data name="CtlCurrentPassword.Text" xml:space="preserve">
+    <value>Current password</value>
+  </data>
+  <data name="CtlChangeBtn.Content" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="StringChangePassword" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="CtlUpdatePasswrod.Content" xml:space="preserve">
+    <value>Update password</value>
+  </data>
+  <data name="CtlAlgorithm.Text" xml:space="preserve">
+    <value>Algorithm</value>
+  </data>
+  <data name="CtlLicenseKey.Text" xml:space="preserve">
+    <value>License key</value>
+  </data>
+  <data name="CtlValidityPeriod.Text" xml:space="preserve">
+    <value>Validity period</value>
+  </data>
+  <data name="CtlAddress.Text" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="CtlContact.Text" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="CtlManager.Text" xml:space="preserve">
+    <value>Manager</value>
+  </data>
+  <data name="CtlAlgorithmPlanDescription.Text" xml:space="preserve">
+    <value>The number and type of algorithm varies by plan and can be checked in the analysis results.</value>
+  </data>
+  <data name="CtlConsultationPlanDescription.Text" xml:space="preserve">
+    <value>The in quiry quota renews on the 1st of each month, and a proportional amount is provided for partial months.</value>
+  </data>
+  <data name="CtlCity.Text" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="CtlState.Text" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="CtlCountry.Text" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="CtlZipCode.Text" xml:space="preserve">
+    <value>Zip code</value>
+  </data>
+  <data name="CtlSelectAll.Content" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="StringMultiSelectionStatusFormat" xml:space="preserve">
+    <value>{0} Selected</value>
+  </data>
+  <data name="StringReAnalysis" xml:space="preserve">
+    <value>Reanalysis</value>
+  </data>
+  <data name="StringDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="StringReport" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="CtlOk.Content" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="CtlCancel.Content" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CtlQuestion.Text" xml:space="preserve">
+    <value>Question</value>
+  </data>
+  <data name="StringQuestionTextBoxHolder" xml:space="preserve">
+    <value>Please enter your inquiry</value>
+  </data>
+  <data name="CtlEmptyConsultTitle.Text" xml:space="preserve">
+    <value>No consultation registered</value>
+  </data>
+  <data name="CtlEmptyConsultDesc.Text" xml:space="preserve">
+    <value>Please click 'New Consultation'
+below to make a consultation</value>
+  </data>
+  <data name="CtlAddQuestion.Content" xml:space="preserve">
+    <value>Add a question</value>
+  </data>
+  <data name="CtlRegisteredInquiry.Text" xml:space="preserve">
+    <value>Registered inquiry : </value>
+  </data>
+  <data name="CtlAnswered.Text" xml:space="preserve">
+    <value>Answered</value>
+  </data>
+  <data name="CtlRememberMe.OffContent" xml:space="preserve">
+    <value>Remember me</value>
+  </data>
+  <data name="CtlRememberMe.OnContent" xml:space="preserve">
+    <value>Remember me</value>
+  </data>
+  <data name="CtlHowToUse.Text" xml:space="preserve">
+    <value>More about the product</value>
+  </data>
+  <data name="CtlAesthetic.Content" xml:space="preserve">
+    <value>Aesthetic</value>
+  </data>
+  <data name="CtlReconstructive.Content" xml:space="preserve">
+    <value>Reconstructive</value>
+  </data>
+  <data name="CtlBoth.Content" xml:space="preserve">
+    <value>Both</value>
+  </data>
+  <data name="CtlDragDrop.Text" xml:space="preserve">
+    <value>Drag &amp; drop files here or</value>
+  </data>
+  <data name="CtlChooseFiles.Text" xml:space="preserve">
+    <value>choose files</value>
+  </data>
+  <data name="CtlSupportedFormat.Text" xml:space="preserve">
+    <value>Files Supported : JPEG, PNG</value>
+  </data>
+  <data name="CtlNewAnswers.Content" xml:space="preserve">
+    <value>New Answers</value>
+  </data>
+  <data name="StringLicenseExpired" xml:space="preserve">
+    <value>Your license has expired.</value>
+  </data>
+  <data name="StringLicenseExpiredLessThan1h" xml:space="preserve">
+    <value>Expires in less than an hour.</value>
+  </data>
+  <data name="StringLicenseExpiredLessThan24h" xml:space="preserve">
+    <value>Expires in {0} hours</value>
+  </data>
+  <data name="StringLicenseExpiredLessThan7d" xml:space="preserve">
+    <value>Expires in {0} days</value>
+  </data>
+  <data name="CtlSortBy.Text" xml:space="preserve">
+    <value>Sort by</value>
+  </data>
+  <data name="CtlSortOrder.Text" xml:space="preserve">
+    <value>Sort Order</value>
+  </data>
+  <data name="StringLoginFailLockedTempMessage" xml:space="preserve">
+    <value>Your account has been locked due to multiple failed login attempts.
+Please try again in {0} or reset your password</value>
+  </data>
+  <data name="StringLoginFailLockedForeverMessage" xml:space="preserve">
+    <value>Your account has been locked due to multiple failed login attempts.
+If account recovery is needed, please contact customer service, or reset your password.</value>
+  </data>
+  <data name="StringLoginFailTitle" xml:space="preserve">
+    <value>Login Fail</value>
+  </data>
+  <data name="StringPasswordChangeRequired" xml:space="preserve">
+    <value>Password Change Required</value>
+  </data>
+  <data name="StringTemporaryPassword" xml:space="preserve">
+    <value>The account is currently logged in with a temporary password.
+Please update your password to protect your account.</value>
+  </data>
+  <data name="StringInitPassword" xml:space="preserve">
+    <value>After account creation, a password change is required.
+Please update your password to protect your account.</value>
+  </data>
+  <data name="StringPasswordExpired" xml:space="preserve">
+    <value>For a secure service experience, we recommend changing your password regularly.</value>
+  </data>
+  <data name="StringChangeNow" xml:space="preserve">
+    <value>Change Now</value>
+  </data>
+  <data name="StringChangeLater" xml:space="preserve">
+    <value>Change Later</value>
+  </data>
+  <data name="StringLogoutNotAction" xml:space="preserve">
+    <value>You've been inactive for a while.
+To keep using the service, Please sign in again</value>
+  </data>
+  <data name="StringNotice" xml:space="preserve">
+    <value>Notice</value>
+  </data>
+  <data name="StringUpdatePlan" xml:space="preserve">
+    <value>Your plan has been updated. Please sign in again to apply the new plan.</value>
+  </data>
+  <data name="StringInvalidLoginInfo" xml:space="preserve">
+    <value>Login information is invalid.
+To keep using the service, please sign in again.</value>
+  </data>
+  <data name="StringDuplicatelogin" xml:space="preserve">
+    <value>You’ve been logged out due to a login from another device.
+To keep using the service, please sign in again.</value>
+  </data>
+  <data name="StringLoggedOut" xml:space="preserve">
+    <value>Logged Out</value>
+  </data>
+  <data name="StringChangePassowdMessage" xml:space="preserve">
+    <value>Passwords has been changed.</value>
+  </data>
+  <data name="CtlUpdate.Content" xml:space="preserve">
+    <value>Update</value>
+  </data>	
+  <data name="StringWExpertUpdate" xml:space="preserve">
+    <value>Confirm Update</value>
+  </data>
+  <data name="StringWExpertUpdateMessage" xml:space="preserve">
+    <value>A newer version (v{0}) is available.
+Would you like to update now?</value>
+  </data>
+  <data name="StringWExpertForceUpdate" xml:space="preserve">
+    <value>Update Required</value>
+  </data>	
+  <data name="StringWExpertForceUpdateMessage" xml:space="preserve">
+    <value>A critical update (v{0}) is required.
+You must update to continue using this app.</value>
+  </data>
+  <data name="CtlNoAnswer.Text" xml:space="preserve">
+    <value>There are no registered answers.</value>
+  </data>
+  <data name="StringUpdateErrorTitle" xml:space="preserve">
+    <value>Update Error</value>
+  </data>
+  <data name="StringUpdateErrorMessage" xml:space="preserve">
+    <value>The update program is missing or unavailable.
+Please reinstall the application or contact support.</value>
+  </data>	
+  <data name="StringConnectionErrorTitle" xml:space="preserve">
+    <value>Connection Error</value>
+  </data>
+  <data name="StringConnectionErrorMessage" xml:space="preserve">
+    <value>The network connection is temporarily unavailable.
+Please check your internet connection.</value>
+  </data>
+  <data name="CtlExportAnalysisReport.Text" xml:space="preserve">
+    <value>Export Analysis Report</value>
+  </data>
+  <data name="CtlReportRadio1Btn.Content" xml:space="preserve">
+    <value>All Image</value>
+  </data>
+  <data name="CtlReportRadio2Btn.Content" xml:space="preserve">
+    <value>Rupture Case</value>
+  </data>
+  <data name="CtlReportGroup1.Text" xml:space="preserve">
+    <value>Image Export Option</value>
+  </data>
+  <data name="CtlReportGroup2.Text" xml:space="preserve">
+    <value>Chart No.</value>
+  </data>
+  <data name="CtlReportGroup3.Text" xml:space="preserve">
+    <value>Date of birth</value>
+  </data>
+  <data name="CtlReportGroup4.Text" xml:space="preserve">
+    <value>Physician’s Assessment</value>
+  </data>
+  <data name="CtlReportDesc.Text" xml:space="preserve">
+    <value>Enter the required information and click 'Apply Information'. (The applied Information will be displayed in the preview panel on the left.)
+    </value>
+  </data>
+  <data name="CtlReportDesc2.Text" xml:space="preserve">
+    <value>Please select the export options in the next step (PDF, Print, etc.)</value>
+  </data>
+  <data name="StringStartingUp" xml:space="preserve">
+    <value>Starting up...</value>
+  </data>
+  <data name="StringInitializing" xml:space="preserve">
+    <value>Initializing components...</value>
+  </data>
+  <data name="StringCheckingUpdate" xml:space="preserve">
+    <value>Checking for updates...</value>
+  </data>
+  <data name="StringAlmostReady" xml:space="preserve">
+    <value>Almost ready...</value>
+  </data>
+  <data name="StringReadyToBegin" xml:space="preserve">
+    <value>Ready to begin.</value>
+  </data>
+  <data name="StringInstallErrorMessage" xml:space="preserve">
+    <value>An error occurred while installing the update.
+Please try again.</value>
+  </data>	
+</root>

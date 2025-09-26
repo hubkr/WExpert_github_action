@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>WebView2 브릿지 바인딩 예제</title>
+    <script>
+        function callNative() {
+            window.chrome.webview.postMessage('initialized');
+        }
+
+        function receiveNative(param) {
+            alert(param);
+        }
+    </script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #fff;
+        }
+
+        button {
+            font-size: 1.2em;
+            padding: 1em 2em;
+            margin-top: 2em;
+        }
+    </style>
+</head>
+<body>
+    <h2>네이티브-웹 브릿지 바인딩 예제 (WebView2)</h2>
+    <button onclick="callNative()">C# 네이티브 함수 호출</button>
+    <iframe src="https://dev-wexpert-report-preview.w-ai.ai/"
+            style="width:80vw; height:40vh; border:1px solid #ddd; margin-top:2em;"/>
+</body>
+</html>

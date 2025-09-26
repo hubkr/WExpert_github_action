@@ -1,0 +1,232 @@
+<base:WEXBasePage
+    x:Class="WExpert.Views.ContentDialogs.AccountSubPage1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:behaviors="using:WExpert.Binding.Behavior"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:base="using:WExpert.Views.Base"
+    xmlns:converter="using:WExpert.Binding.Converter"
+    NavigationCacheMode="Required">
+
+    <base:WEXBasePage.Resources>
+
+        <converter:WEXAccountDialogConverter x:Key="wexpertAccountDialogConverter"/>
+        
+        <!-- TextBox Style -->
+        <Style x:Key="AccountSubPage1LocalTextBoxStyle1" TargetType="TextBox"
+           BasedOn="{StaticResource WEXLineTextBoxStyle2}">
+            <Setter Property="IsEnabled" Value="False"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Padding" Value="10"/>
+        </Style>
+
+        <Style x:Key="AccountSubPage1LocalTextBoxStyle2" TargetType="TextBox"
+           BasedOn="{StaticResource WEXLineTextBoxStyle2}">
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Background" Value="{StaticResource TypeTransparent8}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource SolidDkSolid}"/>
+        </Style>
+
+        <!-- Button Style -->
+        <Style x:Key="AccountSubPage1LocalButtonStyle1" TargetType="Button"
+               BasedOn="{StaticResource WEXSolidButtonStyle1}">
+            <Setter Property="Height" Value="34"/>
+            <Setter Property="Width" Value="126"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="Margin" Value="0,0,0,10" />
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+
+        <Style x:Key="AccountSubPage1LocalButtonStyle2" TargetType="Button"
+               BasedOn="{StaticResource AccountSubPage1LocalButtonStyle1}">
+            <Setter Property="Margin" Value="0" />
+
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+
+        <!-- Password Box Style -->
+        <Style x:Key="AccountSubPage1LocalPasswordBoxStyle1" TargetType="PasswordBox"
+               BasedOn="{StaticResource WEXLinePasswordBoxStyle1}">
+            <Setter Property="Height" Value="44"/>
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="Padding" Value="10, 12,10,10" />
+            <Setter Property="MaxLength" Value="16" />
+        </Style>
+        
+        <!-- TextBolock Style-->
+        <Style x:Key="AccountSubPage1LocalTextBlockStyle1" TargetType="TextBlock"
+               BasedOn="{StaticResource TextBlockStyleBase}">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Margin" Value="0,10,0,10"/>
+            <Setter Property="Foreground" Value="{StaticResource ComponentsLtGrey}"/>
+        </Style>
+
+        <!-- RichTextBlock Style -->
+        <Style x:Key="AccountSubPage1LocalRichTextBlockStyle1" TargetType="RichTextBlock"
+               BasedOn="{StaticResource RichTextBlockStyleBase}">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="MaxLines" Value="1"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="{StaticResource SolidLtSolid}"/>
+        </Style>
+
+        <Style x:Key="AccountSubPage1LocalRichTextBlockStyle2" TargetType="RichTextBlock"
+               BasedOn="{StaticResource RichTextBlockStyleBase}">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="LineHeight" Value="18"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="{StaticResource ComponentsLtWhite}"/>
+        </Style>
+    </base:WEXBasePage.Resources>
+    
+    <ScrollViewer>
+        <StackPanel Orientation="Vertical"
+                    Margin="50,20,50,20">
+            
+            <TeachingTip x:Name="NewPasswordTeachingTip"
+                         Target="{x:Bind NewPasswordBox}"
+                         IsOpen="{x:Bind ViewModel.IsOpenNewPasswordTeachingTip, Mode=OneWay}"
+                         PreferredPlacement="Center"
+                         PlacementMargin="0,20,-250,0"
+                         Style="{x:Bind ViewModel.NewPasswordTeachingTipStyle, Mode=OneWay}">
+                <TeachingTip.Content>
+                    <Grid HorizontalAlignment="Left">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0" Margin="0,0,12,0">
+                            <Image Source="{x:Bind ViewModel.NewPasswordTeachingTipIcon, Mode=OneWay}"   
+                                   Width="24"
+                                   Height="24"/>
+                        </Grid>
+                        <Grid Grid.Column="1" Margin="0,0,40,0">
+                            <RichTextBlock Style="{StaticResource AccountSubPage1LocalRichTextBlockStyle2}">
+                                <Paragraph>
+                                    <Run Text="{x:Bind ViewModel.NewPasswordTeachingTipMessage, Mode=OneWay}"/>
+                                </Paragraph>
+                            </RichTextBlock>
+                        </Grid>
+                    </Grid>
+                </TeachingTip.Content>
+            </TeachingTip>            
+            
+            <TextBlock x:Uid="CtlAccount"
+                       Style="{StaticResource ContentDialogLabelTextStyle3}"/>
+            <Rectangle Height="25"/>
+        
+            <!-- ID -->
+            <TextBlock x:Uid="CtlId"
+                       Style="{StaticResource ContentDialogLabelTextStyle4}"/>
+            <TextBox Style="{StaticResource AccountSubPage1LocalTextBoxStyle2}"
+                     Text="{x:Bind ViewModel.Id, Mode=OneWay}"/>
+            
+            <Rectangle Height="20"/>
+        
+            <!-- Password -->
+            <TextBlock x:Uid="CtlPassword"
+                       Style="{StaticResource ContentDialogLabelTextStyle4}"/>
+
+            <Button x:Name="ChangeButton"
+                    x:Uid="CtlChangeBtn"
+                    Visibility="{x:Bind ViewModel.ShowUpdatePasswordButton, Mode=OneWay}"
+                    Style="{StaticResource AccountSubPage1LocalButtonStyle1}"
+                    Command="{x:Bind ViewModel.UpdatePasswordModeCommand}"/>
+
+            <Grid Visibility="{x:Bind ViewModel.ShowUpdatePassword, Mode=OneWay}">
+                <StackPanel Orientation="Vertical" Margin="0,-5,0,0">
+                    <!-- Current password -->
+                    <TextBlock x:Uid="CtlCurrentPassword"
+                               Style="{StaticResource AccountSubPage1LocalTextBlockStyle1}"/>
+                    <PasswordBox x:Name="CurrentPasswordBox"
+                                 x:Uid="CtlCurrentPasswordHint" 
+                                 Style="{StaticResource AccountSubPage1LocalPasswordBoxStyle1}"
+                                 GotFocus="PasswordBox_GotFocus"
+                                 LostFocus="PasswordBox_LostFocus"
+                                 PasswordChanged="PasswordBox_PasswordChanged"
+                                 KeyDown="PasswordBox_KeyDown">
+                        <i:Interaction.Behaviors>
+                            <behaviors:FocusBehavior IsFocused="{x:Bind ViewModel.IsCurrentPasswordBoxFocused, Mode=OneWay}" />
+                        </i:Interaction.Behaviors>
+                    </PasswordBox>
+
+                    <!-- New password -->
+                    <TextBlock x:Uid="CtlNewPassword"
+                               Style="{StaticResource AccountSubPage1LocalTextBlockStyle1}"/>
+                    <PasswordBox x:Name="NewPasswordBox"
+                                 x:Uid="CtlNewPasswordHint"  
+                                 Style="{StaticResource AccountSubPage1LocalPasswordBoxStyle1}"
+                                 GotFocus="PasswordBox_GotFocus"
+                                 LostFocus="PasswordBox_LostFocus"
+                                 PasswordChanged="PasswordBox_PasswordChanged"
+                                 KeyDown="PasswordBox_KeyDown">
+                        <i:Interaction.Behaviors>
+                            <behaviors:FocusBehavior IsFocused="{x:Bind ViewModel.IsNewPasswordBoxFocused, Mode=OneWay}" />
+                        </i:Interaction.Behaviors>
+                    </PasswordBox>
+
+                    <!-- Confirm new password -->
+                    <TextBlock x:Uid="CtlConfirmPassword"
+                               Style="{StaticResource AccountSubPage1LocalTextBlockStyle1}"/>
+                    <PasswordBox x:Name="ConfirmPasswordBox"
+                                 x:Uid="CtlConfirmNewPasswordHint"  
+                                 Style="{StaticResource AccountSubPage1LocalPasswordBoxStyle1}"
+                                 GotFocus="PasswordBox_GotFocus"
+                                 LostFocus="PasswordBox_LostFocus"
+                                 PasswordChanged="PasswordBox_PasswordChanged"
+                                 KeyDown="PasswordBox_KeyDown"/>
+
+                    <Rectangle Height="10"/>
+
+                    <Grid Height="58" VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="8"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Button x:Name="UpdatePasswrodButton"
+                                    x:Uid="CtlUpdatePasswrod"
+                                    Style="{StaticResource AccountSubPage1LocalButtonStyle2}"
+                                    IsEnabled="{x:Bind ViewModel.EnableUpdatePasswordButton, Mode=OneWay}"
+                                    Click="UpdatePasswordButton_Click"/>
+                            <ProgressRing IsActive="{x:Bind ViewModel.UpdatePasswordProgress, Mode=OneWay}"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Center"
+                                          Style="{StaticResource WEXProgressRingStyle1}"/>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <RichTextBlock Style="{StaticResource AccountSubPage1LocalRichTextBlockStyle1}">
+                                <Paragraph>
+                                    <Run Text="{x:Bind ViewModel.ErrorMessage, Mode=OneWay}"
+                                         Foreground="{x:Bind ViewModel.ErrorMessageColor, Mode=OneWay}"/>
+                                </Paragraph>
+                            </RichTextBlock>
+                        </Grid>
+                    </Grid>
+
+                    <Rectangle Height="10"/>
+                </StackPanel>
+            </Grid>
+
+            <!-- Name -->
+            <TextBlock x:Uid="CtlName"
+                       Style="{StaticResource ContentDialogLabelTextStyle4}"/>
+            <TextBox Style="{StaticResource AccountSubPage1LocalTextBoxStyle2}"
+                     Text="{x:Bind ViewModel.Name, Mode=OneWay}"/>
+            <Rectangle Height="16"/>
+        
+            <!-- Mail -->
+            <TextBlock x:Uid="CtlEmail"
+                       Style="{StaticResource ContentDialogLabelTextStyle4}"/>
+            <TextBox Style="{StaticResource AccountSubPage1LocalTextBoxStyle2}"
+                     Text="{x:Bind ViewModel.Mail, Mode=OneWay}"/>
+        </StackPanel>
+    </ScrollViewer>
+</base:WEXBasePage>

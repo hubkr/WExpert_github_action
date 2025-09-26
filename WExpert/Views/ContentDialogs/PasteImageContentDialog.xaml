@@ -1,0 +1,85 @@
+<base:WEXBaseContentDialog
+    x:Class="WExpert.Views.ContentDialogs.PasteImageContentDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:base="using:WExpert.Views.Base"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:behaviors="using:WExpert.Binding.Behavior"
+    IsPrimaryButtonEnabled="{x:Bind ViewModel.EnableAddButton, Mode=OneWay}"
+    xmlns:wexcontrols="using:WExpert.Controls"
+    Loaded="Dialog_Loaded">
+
+    <base:WEXBaseContentDialog.Resources>
+        <!-- TextBox Style -->
+        <Style x:Key="PasteImageLocalContentDialogTextBoxStyle1" TargetType="TextBox"
+               BasedOn="{StaticResource WEXLineTextBoxStyle1}">
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10,10,10,0"/>
+            <Setter Property="CornerRadius" Value="6"/>
+        </Style>
+    </base:WEXBaseContentDialog.Resources>
+    
+    <!-- #region Titlebar 영역 -->
+    <base:WEXBaseContentDialog.TitleTemplate>
+        <DataTemplate>
+            <Grid MinWidth="600"
+                  MaxWidth="600"
+                  Height="70">
+
+                <TextBlock x:Uid="CtlAddClipboardData"
+                           Style="{StaticResource ContentDialogTitleTextBlockStyle1}"/>
+
+                <!-- TODO .. binding 을 통해 close 시키기 -->
+                <Button Style="{StaticResource DialogCloseButtonStyle1}"
+                        Click="OnClose">
+                    <Image Style="{StaticResource DialogHeaderCloseButtonStyle1}"/>
+                    <ToolTipService.ToolTip>
+                        <ToolTip x:Uid="CtlCloseTooltip" />
+                    </ToolTipService.ToolTip>
+                </Button>
+            </Grid>
+        </DataTemplate>
+    </base:WEXBaseContentDialog.TitleTemplate>
+    <!-- endregion -->
+    
+    <!-- #region Body 영역 -->
+    <ScrollViewer>
+        <Grid Margin="26,0,26,0"
+              MinWidth="540"
+              MaxWidth="540">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="400"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+
+            <!-- File Name -->
+            <StackPanel Grid.Row="0" Orientation="Vertical">
+                <TextBlock x:Uid="CtlFileName"
+                           Style="{StaticResource ContentDialogLabelTextStyle1}"/>
+                <TextBox x:Uid="FileName"
+                         Style="{StaticResource PasteImageLocalContentDialogTextBoxStyle1}"
+                         SelectionStart="{x:Bind ViewModel.FileNameSelectionStart, Mode=OneWay}"
+                         Text="{x:Bind ViewModel.FileName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+
+            <!-- Added image -->
+            <Grid Grid.Row="2">
+                <TextBlock x:Uid="CtlAddedFile"
+                           Style="{StaticResource ContentDialogLabelTextStyle1}"/>
+            </Grid>
+        
+            <Grid Grid.Row="3"
+                  CornerRadius="8"
+                  BorderBrush="{StaticResource SolidLtSolid}"
+                  BorderThickness="1">
+                <Image Margin="20"
+                       Source="{x:Bind ViewModel.SourceImage, Mode=OneWay}"/>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+    <!-- endregion -->
+</base:WEXBaseContentDialog>

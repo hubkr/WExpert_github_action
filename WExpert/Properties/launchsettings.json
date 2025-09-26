@@ -1,0 +1,10 @@
+{
+    "profiles": {
+      "WExpert (Unpackaged)": {
+        "commandName": "Project"
+      },
+      "WExpert (Package)": {
+        "commandName": "MsixPackage"
+      }
+    }
+}
