@@ -51,16 +51,33 @@ jobs:
       run: |
         $outputPath = $env:Output_Directory
         if (Test-Path $outputPath) {
-          Write-Host "Removing unwanted language folders..."
+          Write-Host "Removing unwanted language resource folders..."
+          
+          $keepLanguages = @("en-US")
           $allDirs = Get-ChildItem -Path $outputPath -Directory
+          
           foreach ($dir in $allDirs) {
-            if ($dir.Name -ne "en-US" -and $dir.Name.Length -le 10 -and $dir.Name -match "^[a-zA-Z-]+$") {
-              Write-Host "Removing: $($dir.Name)"
-              Remove-Item -Path $dir.FullName -Recurse -Force
+            $dirName = $dir.Name
+            $isLanguageFolder = $false
+            
+            if ($dirName -match "^[a-z]{2}$" -or $dirName -match "^[a-z]{2}-[A-Z]{2}$") {
+              $isLanguageFolder = $true
+            }
+            
+            if ($isLanguageFolder -and $keepLanguages -notcontains $dirName) {
+              $muiFiles = Get-ChildItem -Path $dir.FullName -Filter "*.mui" -ErrorAction SilentlyContinue
+              $resourcesFiles = Get-ChildItem -Path $dir.FullName -Filter "*.resources.dll" -ErrorAction SilentlyContinue
+              
+              if ($muiFiles.Count -gt 0 -or $resourcesFiles.Count -gt 0) {
+                Write-Host "Removing language folder: $dirName"
+                Remove-Item -Path $dir.FullName -Recurse -Force
+              }
             }
           }
-          Write-Host "Cleanup completed"
-          Get-ChildItem -Path $outputPath -Directory
+          
+          Write-Host "Language cleanup completed"
+          Write-Host "Remaining directories:"
+          Get-ChildItem -Path $outputPath -Directory | Select-Object Name
         }
     
     - name: List published files
