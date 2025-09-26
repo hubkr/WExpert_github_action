@@ -52,114 +52,26 @@ jobs:
         $outputPath = $env:Output_Directory
         if (Test-Path $outputPath) {
           Write-Host "Removing unwanted language folders..."
-          
-          # 방법 1: 정규식 패턴으로 언어 폴더 찾기
-          $languageFolders = Get-ChildItem -Path $outputPath -Directory | Where-Object { 
-            ($_.Name -match '^[a-z]{2}
-    
-    - name: List published files
-      shell: pwsh
-      run: |
-        if (Test-Path $env:Output_Directory) {
-            Write-Host "Published files in " $env:Output_Directory
-          Get-ChildItem -Path $env:Output_Directory -Recurse | Format-Table Name, Length, LastWriteTime -AutoSize
-        } else {
-          Write-Host "Output directory not found: " $env:Output_Directory
-          Write-Host "Available directories:"
-          Get-ChildItem -Directory | Format-Table Name -AutoSize
-        }
-    
-    - name: Upload setup artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: WExpert-Setup-${{ matrix.configuration }}
-        path: ${{ env.Output_Directory }}
-        if-no-files-found: warn) -or 
-            ($_.Name -match '^[a-z]{2}-[A-Z]{2}
-    
-    - name: List published files
-      shell: pwsh
-      run: |
-        if (Test-Path $env:Output_Directory) {
-          Write-Host "Published files in $env:Output_Directory"
-          Get-ChildItem -Path $env:Output_Directory -Recurse | Format-Table Name, Length, LastWriteTime -AutoSize
-        } else {
-          Write-Host "Output directory not found: $env:Output_Directory"
-          Write-Host "Available directories:"
-          Get-ChildItem -Directory | Format-Table Name -AutoSize
-        }
-    
-    - name: Upload setup artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: WExpert-Setup-${{ matrix.configuration }}
-        path: ${{ env.Output_Directory }}
-        if-no-files-found: warn) -or
-            ($_.Name -match '^[a-z]{2}-[A-Za-z]{2,4}
-    
-    - name: List published files
-      shell: pwsh
-      run: |
-        if (Test-Path $env:Output_Directory) {
-          Write-Host "Published files in $env:Output_Directory"
-          Get-ChildItem -Path $env:Output_Directory -Recurse | Format-Table Name, Length, LastWriteTime -AutoSize
-        } else {
-          Write-Host "Output directory not found: $env:Output_Directory"
-          Write-Host "Available directories:"
-          Get-ChildItem -Directory | Format-Table Name -AutoSize
-        }
-    
-    - name: Upload setup artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: WExpert-Setup-${{ matrix.configuration }}
-        path: ${{ env.Output_Directory }}
-        if-no-files-found: warn) -and 
-            ($_.Name -ne 'en-US')
-          }
-          
-          # 방법 2: 일반적인 .NET 언어 코드 직접 지정
-          $commonLanguages = @(
-            'ar', 'bg', 'ca', 'cs', 'da', 'de', 'el', 'es', 'et', 'eu', 'fa', 'fi', 
-            'fr', 'gl', 'he', 'hi', 'hr', 'hu', 'id', 'it', 'ja', 'kk', 'ko', 'lt', 
-            'lv', 'ms', 'nb', 'nl', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'sv', 'th', 
-            'tr', 'uk', 'vi', 'zh', 'ar-SA', 'bg-BG', 'ca-ES', 'zh-CN', 'zh-TW', 
-            'zh-Hans', 'zh-Hant', 'cs-CZ', 'da-DK', 'de-DE', 'el-GR', 'es-ES', 
-            'et-EE', 'eu-ES', 'fa-IR', 'fi-FI', 'fr-FR', 'gl-ES', 'he-IL', 'hi-IN', 
-            'hr-HR', 'hu-HU', 'id-ID', 'it-IT', 'ja-JP', 'ko-KR', 'lt-LT', 'lv-LV', 
-            'ms-MY', 'nb-NO', 'nl-NL', 'pl-PL', 'pt-PT', 'pt-BR', 'ro-RO', 'ru-RU', 
-            'sk-SK', 'sl-SI', 'sv-SE', 'th-TH', 'tr-TR', 'uk-UA', 'vi-VN', 'sr-Latn-RS'
-          )
-          
-          # 패턴 매칭으로 찾은 폴더들 삭제
-          foreach ($folder in $languageFolders) {
-            Write-Host "Removing by pattern: " $folder.Name
-            Remove-Item -Path $folder.FullName -Recurse -Force
-          }
-          
-          # 일반적인 언어 코드로 추가 삭제
-          foreach ($lang in $commonLanguages) {
-            $langPath = Join-Path -Path $outputPath -ChildPath $lang
-            if (Test-Path $langPath) {
-              Write-Host "Removing by list: $lang"
-              Remove-Item -Path $langPath -Recurse -Force
+          $allDirs = Get-ChildItem -Path $outputPath -Directory
+          foreach ($dir in $allDirs) {
+            if ($dir.Name -ne "en-US" -and $dir.Name.Length -le 10 -and $dir.Name -match "^[a-zA-Z-]+$") {
+              Write-Host "Removing: $($dir.Name)"
+              Remove-Item -Path $dir.FullName -Recurse -Force
             }
           }
-          
-          Write-Host "Remaining folders after cleanup:"
-          Get-ChildItem -Path $outputPath -Directory | Format-Table Name -AutoSize
+          Write-Host "Cleanup completed"
+          Get-ChildItem -Path $outputPath -Directory
         }
     
     - name: List published files
       shell: pwsh
       run: |
         if (Test-Path $env:Output_Directory) {
-          Write-Host "Published files in $env:Output_Directory"
-          Get-ChildItem -Path $env:Output_Directory -Recurse | Format-Table Name, Length, LastWriteTime -AutoSize
+          Write-Host "Published files:"
+          Get-ChildItem -Path $env:Output_Directory -Recurse
         } else {
-          Write-Host "Output directory not found: $env:Output_Directory"
-          Write-Host "Available directories:"
-          Get-ChildItem -Directory | Format-Table Name -AutoSize
+          Write-Host "Output directory not found"
+          Get-ChildItem -Directory
         }
     
     - name: Upload setup artifacts
