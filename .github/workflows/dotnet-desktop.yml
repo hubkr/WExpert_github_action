@@ -48,7 +48,13 @@ jobs:
     
     # 🚀 Self-contained 앱 퍼블리시 (en-US, ko-KR만 포함)
     - name: Publish self-contained app
-      run: dotnet publish $env:Publish_Project_Path --configuration ${{ matrix.configuration }} --runtime win-x64 --self-contained true --output $env:Output_Directory /p:SatelliteResourceLanguages="en-US;ko-KR"
+      run: |
+        dotnet publish $env:Publish_Project_Path `
+          --configuration ${{ matrix.configuration }} `
+          --runtime win-x64 `
+          --self-contained true `
+          --output $env:Output_Directory `
+          -p:SatelliteResourceLanguages="en-US`;ko-KR"
     
     # 📂 빌드 결과 확인 (PowerShell 명령어 수정)
     - name: List published files
