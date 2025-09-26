@@ -54,8 +54,7 @@ jobs:
           --runtime win-x64 `
           --self-contained true `
           --output $env:Output_Directory `
-          -p:SatelliteResourceLanguages="en-US`"
-    # -p:SatelliteResourceLanguages="en-US`;ko-KR"
+          -p:SatelliteResourceLanguages="en-US"
     
     # 📂 빌드 결과 확인 (PowerShell 명령어 수정)
     - name: List published files
