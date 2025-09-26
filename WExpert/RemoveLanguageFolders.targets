@@ -7,6 +7,7 @@
 		<LanguageItems Include="$(ExcludedLanguages.Split(';'))" />
 	</ItemGroup>
 	<Target Name="RemoveFolders" AfterTargets="Build;Publish">
+		<Message Text="✅ RemoveFolders target executed" Importance="high" />
 		<ItemGroup>
 			<RemovingFiles Include="$(OutDir)*\*.mui" Exclude="$(OutDir)en-US\*.mui;$(OutDir)ko-KR\*.mui" />
 			<RemovingFolders Include="@(RemovingFiles->'%(RootDir)%(Directory)')" />
