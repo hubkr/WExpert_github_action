@@ -53,24 +53,34 @@ jobs:
         if (Test-Path $outputPath) {
           Write-Host "Removing unwanted language resource folders..."
           
-          $keepLanguages = @("en-US")
+          $keepLanguages = @("en-US", "en-us")
           $allDirs = Get-ChildItem -Path $outputPath -Directory
+          
+          $languageFolders = @(
+            "az-Latn-AZ", "bs-Latn-BA", "ca-Es-VALENCIA", "fil-PH", "kok-IN",
+            "quz-PE", "sr-Cyrl-BA", "sr-Cyrl-RS", "sr-Latn-RS", "uz-Latn-UZ",
+            "ar", "bg", "ca", "cs", "da", "de", "el", "es", "et", "eu", "fa", "fi",
+            "fr", "gl", "he", "hi", "hr", "hu", "id", "it", "ja", "kk", "ko", "lt",
+            "lv", "ms", "nb", "nl", "pl", "pt", "ro", "ru", "sk", "sl", "sv", "th",
+            "tr", "uk", "vi", "zh", "ar-SA", "bg-BG", "ca-ES", "zh-CN", "zh-TW",
+            "zh-Hans", "zh-Hant", "cs-CZ", "da-DK", "de-DE", "el-GR", "es-ES",
+            "et-EE", "eu-ES", "fa-IR", "fi-FI", "fr-FR", "gl-ES", "he-IL", "hi-IN",
+            "hr-HR", "hu-HU", "id-ID", "it-IT", "ja-JP", "ko-KR", "lt-LT", "lv-LV",
+            "ms-MY", "nb-NO", "nl-NL", "pl-PL", "pt-PT", "pt-BR", "ro-RO", "ru-RU",
+            "sk-SK", "sl-SI", "sv-SE", "th-TH", "tr-TR", "uk-UA", "vi-VN"
+          )
           
           foreach ($dir in $allDirs) {
             $dirName = $dir.Name
-            $isLanguageFolder = $false
             
-            if ($dirName -match "^[a-z]{2}$" -or $dirName -match "^[a-z]{2}-[A-Z]{2}$") {
-              $isLanguageFolder = $true
-            }
-            
-            if ($isLanguageFolder -and $keepLanguages -notcontains $dirName) {
-              $muiFiles = Get-ChildItem -Path $dir.FullName -Filter "*.mui" -ErrorAction SilentlyContinue
-              $resourcesFiles = Get-ChildItem -Path $dir.FullName -Filter "*.resources.dll" -ErrorAction SilentlyContinue
+            if ($languageFolders -contains $dirName -or 
+                ($dirName -match "^[a-z]{2}$") -or 
+                ($dirName -match "^[a-z]{2}-[A-Z]{2}$") -or
+                ($dirName -match "^[a-z]{2}-[A-Za-z]{2,4}-[A-Z]{2}$")) {
               
-              if ($muiFiles.Count -gt 0 -or $resourcesFiles.Count -gt 0) {
+              if ($keepLanguages -notcontains $dirName) {
                 Write-Host "Removing language folder: $dirName"
-                Remove-Item -Path $dir.FullName -Recurse -Force
+                Remove-Item -Path $dir.FullName -Recurse -Force -ErrorAction SilentlyContinue
               }
             }
           }
