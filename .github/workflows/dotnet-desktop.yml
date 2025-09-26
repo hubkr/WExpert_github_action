@@ -21,10 +21,7 @@ jobs:
       Publish_Project_Path: WExpert\WExpert.csproj
       Output_Directory: publish_output
 
-    steps:
-    - name: Show OutDir
-      run: echo $env:Output_Directory
-    
+    steps:   
     - name: Checkout source code
       uses: actions/checkout@v4
       with:
