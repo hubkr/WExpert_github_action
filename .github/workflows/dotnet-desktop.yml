@@ -90,7 +90,7 @@ jobs:
           }
           
           foreach ($folder in $languageFolders) {
-            Write-Host "🗑️ Removing language folder: $($folder.Name)"
+            Write-Host "Removing language folder: $($folder.Name)"
             Remove-Item -Path $folder.FullName -Recurse -Force
           }
           
