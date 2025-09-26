@@ -52,6 +52,7 @@ jobs:
         --runtime win-x64 `
         --self-contained true `
         /p:Platform=x64 `
+        /p:OutDir=${{ env.Output_Directory }}\ `
         --output $env:Output_Directory
 
     # 빌드 결과 폴더 확인
