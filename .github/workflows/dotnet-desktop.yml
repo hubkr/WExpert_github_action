@@ -53,6 +53,7 @@ jobs:
         if (Test-Path $outputPath) {
           Write-Host "Removing unwanted language folders..."
           
+          # 방법 1: 정규식 패턴으로 언어 폴더 찾기
           $languageFolders = Get-ChildItem -Path $outputPath -Directory | Where-Object { 
             ($_.Name -match '^[a-z]{2}
     
@@ -117,6 +118,7 @@ jobs:
             ($_.Name -ne 'en-US')
           }
           
+          # 방법 2: 일반적인 .NET 언어 코드 직접 지정
           $commonLanguages = @(
             'ar', 'bg', 'ca', 'cs', 'da', 'de', 'el', 'es', 'et', 'eu', 'fa', 'fi', 
             'fr', 'gl', 'he', 'hi', 'hr', 'hu', 'id', 'it', 'ja', 'kk', 'ko', 'lt', 
@@ -129,11 +131,13 @@ jobs:
             'sk-SK', 'sl-SI', 'sv-SE', 'th-TH', 'tr-TR', 'uk-UA', 'vi-VN', 'sr-Latn-RS'
           )
           
+          # 패턴 매칭으로 찾은 폴더들 삭제
           foreach ($folder in $languageFolders) {
             Write-Host "Removing by pattern: $($folder.Name)"
             Remove-Item -Path $folder.FullName -Recurse -Force
           }
           
+          # 일반적인 언어 코드로 추가 삭제
           foreach ($lang in $commonLanguages) {
             $langPath = Join-Path -Path $outputPath -ChildPath $lang
             if (Test-Path $langPath) {
