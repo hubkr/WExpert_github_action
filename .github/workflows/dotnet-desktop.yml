@@ -35,11 +35,9 @@ jobs:
     - name: Restore solution packages
       run: msbuild $env:Solution_Name /t:Restore /p:Configuration=${{ matrix.configuration }}
     
-    # 프로젝트 빌드하여 .xbf 파일 생성
     - name: Build project to generate .xbf
       run: msbuild $env:Publish_Project_Path /t:Build /p:Configuration=${{ matrix.configuration }} /p:Platform=x64
     
-    # Self-contained 앱 퍼블리시
     - name: Publish self-contained app
       run: |
         dotnet publish $env:Publish_Project_Path `
@@ -48,7 +46,6 @@ jobs:
           --self-contained true `
           --output $env:Output_Directory
     
-    # en-US 이외의 언어 폴더 삭제 (강화된 버전)
     - name: Remove unwanted language folders
       shell: pwsh
       run: |
@@ -56,11 +53,9 @@ jobs:
         if (Test-Path $outputPath) {
           Write-Host "Removing unwanted language folders..."
           
-          # 방법 1: 정규식 패턴으로 언어 폴더 찾기
           $languageFolders = Get-ChildItem -Path $outputPath -Directory | Where-Object { 
             ($_.Name -match '^[a-z]{2}
     
-    # 빌드 결과 확인 (디렉터리 존재 시에만 실행)
     - name: List published files
       shell: pwsh
       run: |
@@ -73,7 +68,6 @@ jobs:
           Get-ChildItem -Directory | Format-Table Name -AutoSize
         }
     
-    # 빌드 결과물 업로드
     - name: Upload setup artifacts
       uses: actions/upload-artifact@v4
       with:
@@ -123,7 +117,6 @@ jobs:
             ($_.Name -ne 'en-US')
           }
           
-          # 방법 2: 일반적인 .NET 언어 코드 직접 지정
           $commonLanguages = @(
             'ar', 'bg', 'ca', 'cs', 'da', 'de', 'el', 'es', 'et', 'eu', 'fa', 'fi', 
             'fr', 'gl', 'he', 'hi', 'hr', 'hu', 'id', 'it', 'ja', 'kk', 'ko', 'lt', 
@@ -136,13 +129,11 @@ jobs:
             'sk-SK', 'sl-SI', 'sv-SE', 'th-TH', 'tr-TR', 'uk-UA', 'vi-VN', 'sr-Latn-RS'
           )
           
-          # 패턴 매칭으로 찾은 폴더들 삭제
           foreach ($folder in $languageFolders) {
             Write-Host "Removing by pattern: $($folder.Name)"
             Remove-Item -Path $folder.FullName -Recurse -Force
           }
           
-          # 일반적인 언어 코드로 추가 삭제
           foreach ($lang in $commonLanguages) {
             $langPath = Join-Path -Path $outputPath -ChildPath $lang
             if (Test-Path $langPath) {
