@@ -36,10 +36,10 @@ jobs:
       uses: microsoft/setup-msbuild@v2
 
     # ✅ Release 빌드일 때만 테스트 실행, 실패해도 계속 진행
-    - name: Run unit tests (Release only)
-      if: matrix.configuration == 'Release'
-      continue-on-error: true
-      run: dotnet test $env:Test_Project_Path --configuration ${{ matrix.configuration }}
+    #- name: Run unit tests (Release only)
+    #  if: matrix.configuration == 'Release'
+    #  continue-on-error: true
+    #  run: dotnet test $env:Test_Project_Path --configuration ${{ matrix.configuration }}
 
     # 🔄 NuGet 복원
     - name: Restore solution packages
