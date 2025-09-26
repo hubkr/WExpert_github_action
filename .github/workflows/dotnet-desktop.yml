@@ -46,14 +46,23 @@ jobs:
       run: msbuild $env:Solution_Name /t:Restore /p:Configuration=${{ matrix.configuration }}
 
     # 🚀 x64 Self-contained 앱 빌드
-    - name: Publish self-contained x64 setup
-      run: dotnet publish $env:Publish_Project_Path `
-        --configuration ${{ matrix.configuration }} `
-        --runtime win-x64 `
-        --self-contained true `
+    #- name: Publish self-contained x64 setup
+    #  run: dotnet publish $env:Publish_Project_Path `
+    #    --configuration ${{ matrix.configuration }} `
+    #    --runtime win-x64 `
+    #    --self-contained true `
+    #    /p:Platform=x64 `
+    #    /p:OutDir=${{ env.Output_Directory }}\ `
+    #    --output $env:Output_Directory
+
+    - name: Build self-contained x64 setup with MSBuild
+      run: msbuild $env:Publish_Project_Path `
+        /p:Configuration=${{ matrix.configuration }} `
         /p:Platform=x64 `
-        /p:OutDir=${{ env.Output_Directory }}\ `
-        --output $env:Output_Directory
+        /p:RuntimeIdentifier=win-x64 `
+        /p:SelfContained=true `
+        /p:PublishSingleFile=true `
+        /p:OutDir=${{ env.Output_Directory }}\
 
     # 빌드 결과 폴더 확인
     #- name: List published folders
