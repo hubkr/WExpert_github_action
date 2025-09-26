@@ -46,15 +46,58 @@ jobs:
     - name: Build project to generate .xbf
       run: msbuild $env:Publish_Project_Path /t:Build /p:Configuration=${{ matrix.configuration }} /p:Platform=x64
     
-    # 🚀 Self-contained 앱 퍼블리시 (en-US만 포함)
+    # 🚀 Self-contained 앱 퍼블리시
     - name: Publish self-contained app
       run: |
         dotnet publish $env:Publish_Project_Path `
           --configuration ${{ matrix.configuration }} `
           --runtime win-x64 `
           --self-contained true `
-          --output $env:Output_Directory `
-          -p:SatelliteResourceLanguages="en-US"
+          --output $env:Output_Directory
+    
+    # 🗑️ en-US 이외의 언어 폴더 삭제
+    - name: Remove unwanted language folders
+      shell: pwsh
+      run: |
+        $outputPath = $env:Output_Directory
+        if (Test-Path $outputPath) {
+          Write-Host "=== Removing unwanted language folders ==="
+          
+          # 모든 언어 폴더 찾기 (일반적인 언어 코드 패턴)
+          $languageFolders = Get-ChildItem -Path $outputPath -Directory | Where-Object { 
+            $_.Name -match '^[a-z]{2}(-[A-Z]{2})?
+    
+    # 📂 빌드 결과 확인 (PowerShell 명령어 수정)
+    - name: List published files
+      shell: pwsh
+      run: |
+        if (Test-Path $env:Output_Directory) {
+          Write-Host "=== Published files in $env:Output_Directory ==="
+          Get-ChildItem -Path $env:Output_Directory -Recurse | Format-Table Name, Length, LastWriteTime -AutoSize
+        } else {
+          Write-Host "❌ Output directory not found: $env:Output_Directory"
+          Write-Host "Available directories:"
+          Get-ChildItem -Directory | Format-Table Name -AutoSize
+        }
+    
+    # 📦 빌드 결과물 업로드
+    - name: Upload setup artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: WExpert-Setup-${{ matrix.configuration }}
+        path: ${{ env.Output_Directory }}
+        if-no-files-found: warn -and $_.Name -ne 'en-US' 
+          }
+          
+          foreach ($folder in $languageFolders) {
+            Write-Host "🗑️ Removing language folder: $($folder.Name)"
+            Remove-Item -Path $folder.FullName -Recurse -Force
+          }
+          
+          # 남은 폴더 확인
+          Write-Host "=== Remaining folders after cleanup ==="
+          Get-ChildItem -Path $outputPath -Directory | Format-Table Name -AutoSize
+        }
     
     # 📂 빌드 결과 확인 (PowerShell 명령어 수정)
     - name: List published files
