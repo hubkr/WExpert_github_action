@@ -11,7 +11,6 @@ jobs:
     strategy:
       matrix:
         configuration: [Release]
-        #configuration: [Debug, Release]
 
     runs-on: windows-latest
 
@@ -46,16 +45,6 @@ jobs:
       run: msbuild $env:Solution_Name /t:Restore /p:Configuration=${{ matrix.configuration }}
 
     # 🚀 x64 Self-contained 앱 빌드
-    #- name: Publish self-contained x64 setup
-    #  run: dotnet publish $env:Publish_Project_Path `
-    #    --configuration ${{ matrix.configuration }} `
-    #    --runtime win-x64 `
-    #    --self-contained true `
-    #    /p:Platform=x64 `
-    #    /p:OutDir=${{ env.Output_Directory }}\ `
-    #    --output $env:Output_Directory
-
-
     - name: Build self-contained x64 setup with MSBuild
       run: msbuild $env:Publish_Project_Path `
         /p:Configuration=${{ matrix.configuration }} `
@@ -63,18 +52,22 @@ jobs:
         /p:RuntimeIdentifier=win-x64 `
         /p:SelfContained=true `
         /p:PublishSingleFile=true `
-        /p:OutDir=${{ env.Output_Directory }}\
-    
+        /p:OutDir=${{ env.Output_Directory }}
+
+    # 📂 빌드 결과 확인 (디렉터리 존재 시에만 실행)
     - name: List published files
-      run: dir $env:Output_Directory /s
-    
-    # 빌드 결과 폴더 확인
-    #- name: List published folders
-    #  run: dir $env:Output_Directory /s
-  
+      run: |
+        if (Test-Path $env:Output_Directory) {
+          dir $env:Output_Directory /s
+        } else {
+          Write-Host "Output directory not found: $env:Output_Directory"
+        }
+
     # 📦 빌드 결과물 업로드
     - name: Upload setup artifacts
       uses: actions/upload-artifact@v4
       with:
         name: Setup Package
-        path: ${{ env.Output_Directory }}\**
+        path: ${{ env.Output_Directory }}/**
+
+        
