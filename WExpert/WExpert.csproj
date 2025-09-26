@@ -231,4 +231,17 @@
   <!-- 불필요한 언어별 리소스 제거 -->
   <Import Project="RemoveLanguageFolders.targets" />
 	
+  <!-- 추가 리소스 관련 디렉토리 복사(github action 에서 필요) -->
+  <ItemGroup>
+    <Content Include="Assets\**\*">
+  	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</Content>
+    <Content Include="Styles\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</Content>
+	<Content Include="Views\**\*">
+	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</Content>
+  </ItemGroup>
+	
 </Project>
