@@ -8,13 +8,22 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x64;arm64;AnyCPU</Platforms>
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+	 <!--
     <PublishProfile>Properties\PublishProfiles\win10-$(Platform).pubxml</PublishProfile>
+	-->
+	<!-- GitHub Actions에서는 PublishProfile 사용하지 않음 -->
+	<PublishProfile Condition="'$(CI)' != 'true'">Properties\PublishProfiles\win10-$(Platform).pubxml</PublishProfile>
 	<ImplicitUsings>enable</ImplicitUsings>
 	<Nullable>enable</Nullable>
 	<UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
+
+	<PublishReadyToRun>false</PublishReadyToRun>
+	<PublishSingleFile>false</PublishSingleFile>	  
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
     <WindowsPackageType>None</WindowsPackageType>
+	 <SelfContained>true</SelfContained>  
+	  
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="Assets\Html\test.html" />
@@ -229,20 +238,23 @@
   </Target>
 
   <!-- 불필요한 언어별 리소스 제거 -->
-  <Import Project="RemoveLanguageFolders.targets" />
+  <Import Project="RemoveLanguageFolders.targets" Condition="Exists('RemoveLanguageFolders.targets')" />
 	
   <!-- 추가 리소스 관련 디렉토리 복사(github action 에서 필요) -->
   <ItemGroup>
     <Content Include="Assets\**\*">
-  	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 	</Content>
-    <Content Include="Styles\**\*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	<Content Include="Styles\**\*">
+	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 	</Content>
 	<Content Include="Views\**\*">
 	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 	</Content>
-  </ItemGroup>
+</ItemGroup>
 
   <!-- XBF 파일 생성 (git action 에서 생성되지 않아 추가 -->
   <PropertyGroup>
