@@ -47,7 +47,7 @@ jobs:
     - name: Restore and build for publish
       run: |
         msbuild $env:Publish_Project_Path `
-          /t:Restore;Build `
+          "/t:Restore;Build" `
           /p:Configuration=${{ matrix.configuration }} `
           /p:Platform=x64 `
           /p:RuntimeIdentifier=win-x64 `
