@@ -243,5 +243,12 @@
 	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	</Content>
   </ItemGroup>
+
+  <!-- XBF 파일 생성 (git action 에서 생성되지 않아 추가 -->
+  <PropertyGroup>
+    <GenerateXbfFiles>true</GenerateXbfFiles>
+	<XamlCompilation>true</XamlCompilation>
+	<EnableXbfGeneration>true</EnableXbfGeneration>
+  </PropertyGroup>
 	
 </Project>
