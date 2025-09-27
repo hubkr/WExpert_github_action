@@ -36,38 +36,15 @@ jobs:
       run: msbuild $env:Solution_Name /t:Restore /p:Configuration=${{ matrix.configuration }}
     
     - name: Build project to generate .xbf
-      run: |
-        msbuild $env:Publish_Project_Path `
-          /t:Build `
-          /p:Configuration=${{ matrix.configuration }} `
-          /p:Platform=x64 `
-          /p:GenerateXbfFiles=true `
-          /p:XamlCompilation=true
-    
-    - name: Restore and build for publish
-      run: |
-        msbuild $env:Publish_Project_Path `
-          "/t:Restore;Build" `
-          /p:Configuration=${{ matrix.configuration }} `
-          /p:Platform=x64 `
-          /p:RuntimeIdentifier=win-x64 `
-          /p:SelfContained=true `
-          /p:GenerateXbfFiles=true `
-          /p:XamlCompilation=true
+      run: msbuild $env:Publish_Project_Path /t:Build /p:Configuration=${{ matrix.configuration }} /p:Platform=x64
     
     - name: Publish self-contained app
       run: |
-        msbuild $env:Publish_Project_Path `
-          /t:Publish `
-          /p:Configuration=${{ matrix.configuration }} `
-          /p:Platform=x64 `
-          /p:RuntimeIdentifier=win-x64 `
-          /p:SelfContained=true `
-          /p:PublishDir=$env:Output_Directory `
-          /p:GenerateXbfFiles=true `
-          /p:XamlCompilation=true `
-          /p:PublishReadyToRun=false `
-          /p:PublishSingleFile=false
+        dotnet publish $env:Publish_Project_Path `
+          --configuration ${{ matrix.configuration }} `
+          --runtime win-x64 `
+          --self-contained true `
+          --output $env:Output_Directory
     
     - name: Remove unwanted language folders
       shell: pwsh
