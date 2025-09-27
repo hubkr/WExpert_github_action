@@ -31,27 +31,16 @@ jobs:
         
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v2
-      
-    - name: Restore solution packages
-      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=${{ matrix.configuration }}
+
+    - name: Restore packages
+      run: msbuild $env:Publish_Project_Path /t:Restore /p:Configuration=${{ matrix.configuration }}
     
-    - name: Build project to generate .xbf
+    - name: Build for .xbf generation  
       run: |
         msbuild $env:Publish_Project_Path `
           /t:Build `
           /p:Configuration=${{ matrix.configuration }} `
           /p:Platform=x64 `
-          /p:GenerateXbfFiles=true `
-          /p:XamlCompilation=true
-    
-    - name: Restore and build for publish
-      run: |
-        msbuild $env:Publish_Project_Path `
-          "/t:Restore;Build" `
-          /p:Configuration=${{ matrix.configuration }} `
-          /p:Platform=x64 `
-          /p:RuntimeIdentifier=win-x64 `
-          /p:SelfContained=true `
           /p:GenerateXbfFiles=true `
           /p:XamlCompilation=true
     
@@ -66,7 +55,7 @@ jobs:
           /p:PublishDir=$env:Output_Directory `
           /p:GenerateXbfFiles=true `
           /p:XamlCompilation=true
-    
+
     - name: Remove unwanted language folders
       shell: pwsh
       run: |
